@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'incidents/incidents_list.dart';
 import 'search_incidents.dart';
-import 'profile.dart';
+import 'users/profile.dart';
 
 class homeIncidents extends StatefulWidget {
   @override
