@@ -1,21 +1,9 @@
 import 'package:flutter/material.dart';
 
-class perfilIncidencia extends StatefulWidget {
-  const perfilIncidencia({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<perfilIncidencia> createState() => _perfilIncidenciaState();
-}
-
-class _perfilIncidenciaState extends State<perfilIncidencia> {
+class perfilIncidencia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: SafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
@@ -45,7 +33,7 @@ class _perfilIncidenciaState extends State<perfilIncidencia> {
               Align(
                 alignment: AlignmentDirectional(-0.05, -0.05),
                 child: Image.asset(
-                  'assets/carnet.jpg',
+                  'assets/images/carnet.jpg',
                   width: 200,
                   height: 180,
                   fit: BoxFit.cover,
