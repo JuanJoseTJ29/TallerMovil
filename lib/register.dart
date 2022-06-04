@@ -62,7 +62,7 @@ class _registerState extends State<register> {
           ),
           Padding(
             padding:
-            const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
+            const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: RaisedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
@@ -77,7 +77,7 @@ class _registerState extends State<register> {
           ),
           Padding(
             padding:
-            const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
+            const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
             child: RaisedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {

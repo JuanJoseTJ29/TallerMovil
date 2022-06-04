@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyectomovil/login.dart';
-import 'package:proyectomovil/register.dart';
 import 'package:proyectomovil/registerinci.dart';
+
 
 
 
@@ -16,15 +16,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login',
+      title: 'Registerinci',
       theme: ThemeData(
         primaryColor: Colors.blue
         ),
         home: Scaffold(
           appBar: (
-            AppBar(title: Text('Login'))),
-          body: login(),
+            AppBar(title: Text('Registerinci'))),
+          body: registerinci(),
         ),
     );
   }
+  
 }

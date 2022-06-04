@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class incidence extends StatefulWidget{
+class registerinci extends StatefulWidget{
   @override
-  State<incidence> createState() => _incidenceState();
+  State<registerinci> createState() => _registerinciState();
 }
 
-class _incidenceState extends State<incidence>{
+class _registerinciState extends State<registerinci>{
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -48,7 +48,7 @@ class _incidenceState extends State<incidence>{
           ),
           Padding(
             padding:
-            const EdgeInsets.symmetric(vertical: 80, horizontal: 120),
+            const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
             child: RaisedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
@@ -63,7 +63,7 @@ class _incidenceState extends State<incidence>{
           ),
           Padding(
             padding:
-            const EdgeInsets.symmetric(vertical: 80, horizontal: 120),
+            const EdgeInsets.symmetric(vertical: 30, horizontal: 50),
             child: RaisedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
