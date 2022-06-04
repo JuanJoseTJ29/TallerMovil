@@ -1,6 +1,8 @@
 //Importamos el paquete de material
 import 'package:flutter/material.dart';
 
+import 'perfilincidencia.dart';
+
 //Creamos la clase DescriptionPlace que hereda de la clase StatelessWidget
 class Incident extends StatelessWidget {
   //Variable para el path de la imagen
@@ -64,8 +66,22 @@ class Incident extends StatelessWidget {
               image: AssetImage(pathImage))),
     );
 
+    final botton_ver = ElevatedButton(
+      child: Text(
+        'VER',
+      ),
+      style: ElevatedButton.styleFrom(
+        primary: Color.fromARGB(255, 31, 115, 241),
+      ),
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => perfilIncidencia()),
+        );
+      },
+    );
     return Row(
-      children: <Widget>[photo, IncidentDetails],
+      children: <Widget>[photo, IncidentDetails, botton_ver],
     );
   }
 }

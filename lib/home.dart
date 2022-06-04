@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:proyectomovil/incidents/perfilincidencia.dart';
 //Para importar clases
 
 import 'incidents/incidents_list.dart';
@@ -20,7 +19,6 @@ class _homeIncidents extends State<homeIncidents> {
   final List<Widget> widgetsChildren = [
     //Para dar una lista de metodos
     ReviewList(),
-    perfilIncidencia(),
     SearchIncidents(),
     ProfileIncidents()
   ];

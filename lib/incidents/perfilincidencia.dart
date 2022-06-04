@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyectomovil/incidents/editIncidence.dart';
-import 'package:proyectomovil/main.dart';
-import '../home.dart';
+import 'editIncidence.dart';
 
 class perfilIncidencia extends StatelessWidget {
   @override
@@ -76,7 +74,8 @@ class perfilIncidencia extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => incidence()),
+                        MaterialPageRoute(
+                            builder: (context) => incidence_edit()),
                       );
                     },
                   ),

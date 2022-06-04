@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class incidence extends StatelessWidget {
+class incidence_edit extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return Scaffold(
       key: _formKey,
-      child: Column(
+      body: Column(
         children: <Widget>[
           TextFormField(
             decoration: InputDecoration(labelText: 'Titulo : '),
