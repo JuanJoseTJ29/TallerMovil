@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'incidents/incidents_list.dart';
+// Importar
 import 'home.dart';
 
 void main() {
