@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:proyectomovil/incidents/editIncidence.dart';
+import 'package:proyectomovil/main.dart';
+import '../home.dart';
 
 class perfilIncidencia extends StatelessWidget {
   @override
@@ -70,7 +73,12 @@ class perfilIncidencia extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       primary: Color.fromARGB(255, 31, 115, 241),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => incidence()),
+                      );
+                    },
                   ),
                   ElevatedButton(
                     child: Text(

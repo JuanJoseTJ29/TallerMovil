@@ -16,7 +16,7 @@ class ReviewList extends StatelessWidget {
             "Varuna Yasas", "Lorem Ipsum is simply dummy text"),
         ElevatedButton(
           child: Text(
-            'Editar',
+            'VER',
           ),
           style: ElevatedButton.styleFrom(
             primary: Color.fromARGB(255, 31, 115, 241),
@@ -33,6 +33,20 @@ class ReviewList extends StatelessWidget {
             "Computadora sin funcionamiento",
             "Anahí Salgado",
             "Lorem Ipsum is simply dummy text of the printing"),
+        ElevatedButton(
+          child: Text(
+            'VER',
+          ),
+          style: ElevatedButton.styleFrom(
+            primary: Color.fromARGB(255, 31, 115, 241),
+          ),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => perfilIncidencia()),
+            );
+          },
+        ),
         Incident(
             "assets/images/people_3.jpg",
             "Perdida de Carnet",
