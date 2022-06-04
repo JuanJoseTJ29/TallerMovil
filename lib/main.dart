@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'incidents/incidents_list.dart';
+import 'home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +20,7 @@ class MyApp extends StatelessWidget {
           appBar: AppBar(
             title: Text("Menu Principal"),
           ),
-          body: ReviewList(),
+          body: homeIncidents(),
         ));
   }
 }
