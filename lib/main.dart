@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:proyectomovil/login.dart';
+import 'package:proyectomovil/editIncidence.dart';
+import 'package:proyectomovil/search.dart';
 
 
 void main() {
@@ -17,7 +18,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: incidence()
+      home: Scaffold(
+        appBar: (
+            AppBar(title: Text('hola'))),
+        body: search(),
+      ),
     );
   }
 }
