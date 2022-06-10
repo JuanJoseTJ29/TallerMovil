@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
+import '../home.dart';
+import 'login.dart';
 
-class register extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  State<register> createState() => _registerState();
+  State<Register> createState() => _RegisterState();
 }
 
-class _registerState extends State<register> {
+class _RegisterState extends State<Register> {
   // TextEditingController email = new TextEditingController();
   // TextEditingController password = new TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
-    return Form(
+    return Scaffold(
       key: _formKey,
-      child: Column(
+      body: Column(
         children: <Widget>[
-          Image.asset('assets/images/sanmarcos.jpg', height: 110),
+          Image.asset('assets/images/sanmarcos.jpg', height: 300),
           TextFormField(
             decoration: InputDecoration(labelText: 'Codigo de Estudiante : '),
             validator: (value) {
@@ -62,8 +64,13 @@ class _registerState extends State<register> {
             child: RaisedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  Scaffold.of(context).showSnackBar(
-                      SnackBar(content: Text('Accesando al sistema')));
+                  Scaffold.of(context).showSnackBar(SnackBar(
+                    content: Text('Accesando al sistema'),
+                  ));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => homeIncidents()),
+                  );
                 }
               },
               child: Text('Registrar'),
@@ -78,6 +85,10 @@ class _registerState extends State<register> {
                 if (_formKey.currentState!.validate()) {
                   Scaffold.of(context).showSnackBar(
                       SnackBar(content: Text('Cancelando el Registro')));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
                 }
               },
               child: Text('Cancelar'),
