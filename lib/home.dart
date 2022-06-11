@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'incidents/incidents_list.dart';
 import 'search_incidents.dart';
 import 'users/profile.dart';
+import 'users/loginn.dart';
+import 'users/registerr.dart';
 
 class homeIncidents extends StatefulWidget {
   @override

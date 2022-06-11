@@ -9,6 +9,7 @@ import '../rounded_button.dart';
 import 'home_screen.dart';
 import 'loginn.dart';
 import 'package:http/http.dart' as http;
+import '../home.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -24,12 +25,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController escuelaController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final _text = TextEditingController();
   String _email = '';
   String _password = '';
   String _name = '';
   String _codstud = '';
   String _facultad = '';
   String _escuela = '';
+  bool _validate = false;
 
   createAccountPressed() async {
     bool emailValid = RegExp(
@@ -72,6 +75,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [
+            //homeIncidents(),
             Image.asset('assets/images/sanmarcos.jpg', height: 180),
             const SizedBox(
               height: 20,
@@ -93,6 +97,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Nombre',
+                  errorText: _validate ? 'Ingresa tu nombre' : null,
                 ),
                 onChanged: (value) {
                   _name = value;
@@ -106,6 +111,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Codigo de estudiante',
+                  errorText: _validate ? 'Codigo incorrecto' : null,
                 ),
                 onChanged: (value) {
                   _codstud = value;
@@ -119,6 +125,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Facultad',
+                  errorText: _validate ? 'Ingresa tu facultad' : null,
                 ),
                 onChanged: (value) {
                   _facultad = value;
@@ -132,6 +139,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Escuela',
+                  errorText: _validate ? 'Ingresa tu escuela' : null,
                 ),
                 onChanged: (value) {
                   _escuela = value;
@@ -145,6 +153,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Email',
+                  errorText: _validate ? 'Ingresa tu email' : null,
                 ),
                 onChanged: (value) {
                   _email = value;
@@ -158,6 +167,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   labelText: 'Contraseña',
+                  errorText: _validate ? 'Ingresa tu contraseña' : null,
                 ),
                 onChanged: (value) {
                   _password = value;
@@ -168,7 +178,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               height: 30,
             ),
             RoundedButton(
-              btnText: 'Create Account',
+              btnText: 'Crea tu cuenta',
               onBtnPressed: () => createAccountPressed(),
             ),
             const SizedBox(
@@ -183,7 +193,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ));
               },
               child: const Text(
-                'already have an account',
+                'Ya tengo una cuenta',
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                 ),

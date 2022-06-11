@@ -7,6 +7,7 @@ import 'Users/register.dart';
 import 'Users/login.dart';
 import 'users/loginn.dart';
 import 'users/registerr.dart';
+import 'incidents/incidents_list.dart';
 
 void main() => runApp(MyApp());
 
