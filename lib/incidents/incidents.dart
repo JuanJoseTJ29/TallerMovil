@@ -67,12 +67,9 @@ class Incident extends StatelessWidget {
     );
 
     final botton_ver = ElevatedButton(
-      child: Text(
-        'VER',
-      ),
-      style: ElevatedButton.styleFrom(
-        primary: Color.fromARGB(255, 31, 115, 241),
-      ),
+      child: Text('VER'),
+      style:
+          ElevatedButton.styleFrom(primary: Color.fromARGB(255, 31, 115, 241)),
       onPressed: () {
         Navigator.push(
           context,
@@ -80,6 +77,7 @@ class Incident extends StatelessWidget {
         );
       },
     );
+
     return Row(
       children: <Widget>[photo, IncidentDetails, botton_ver],
     );

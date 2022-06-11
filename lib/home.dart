@@ -20,7 +20,7 @@ class _homeIncidents extends State<homeIncidents> {
     //Para dar una lista de metodos
     ReviewList(),
     SearchIncidents(),
-    ProfileIncidents()
+    ProfileUsers()
   ];
 
   //Metodo para dar una evento
@@ -47,8 +47,7 @@ class _homeIncidents extends State<homeIncidents> {
               BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
               BottomNavigationBarItem(
                   icon: Icon(Icons.search), label: "Buscar"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person), label: "Perfil"),
+              BottomNavigationBarItem(icon: Icon(Icons.person), label: "Perfil")
             ]),
       ),
     );

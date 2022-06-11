@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 // Importar
-import 'Users/register.dart';
 import 'Users/login.dart';
+import 'home.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,7 +23,7 @@ class _MyApp extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'Home',
         home: Scaffold(
-          body: LoginPage(),
+          body: homeIncidents(),
         ));
   }
 }
