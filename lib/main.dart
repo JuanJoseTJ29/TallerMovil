@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:proyectomovil/login.dart';
 import 'package:proyectomovil/registerinci.dart';
 import 'package:proyectomovil/register.dart';
+import 'package:proyectomovil/incidencias_catergo.dart';
 
 
 
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
         ),
         home: Scaffold(
           appBar: (
-            AppBar(title: Text('Registrar Incidencia'))),
-          body: registerinci(),
+            AppBar(title: Text('Categorias de Incidencias'))),
+          body: incidencias_catergo(),
         ),
     );
   }
