@@ -40,61 +40,69 @@ class _EncuestaState extends State< Encuesta> {
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formkey,
-      child: (Column(
-        children: <Widget>[
-          SizedBox(height: 20),
-          TextFormField(
-              maxLines: 3,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Encuesta : '),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "Ingrese algun caracter";
-                }
-                //else {
-                  //  Aqui irian los de la encuesta
-                //}
-              }),
-          SizedBox(height: 20),
-          TextFormField(
-              maxLines: 3,
-              decoration: InputDecoration(
-                  border: OutlineInputBorder(), labelText: 'Comentario : '),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return "Ingrese algun caracter";
-                } else {
-                  if (!_esComentario(value.toString())) {
-                    return 'Ingrese solo letras y espacios';
-                  }
-                }
-              }),
-          SizedBox(height: 20),
-          Center(
-              child: (Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formkey.currentState!.validate()) {
-                      Scaffold.of(context).showSnackBar(
-                          SnackBar(content: Text("Procesando datos...")));
-                    }
-                  },
-                  child: Text('Enviar', style: TextStyle(fontSize: 20)),
-                ),
-                SizedBox(width: 80),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text('Cancelar',
-                      style: TextStyle(color: Colors.white, fontSize: 20)),
-                  style: ElevatedButton.styleFrom(primary: Colors.red),
-                )
-              ])))
-        ],
-      )),
-    );
+    return Center(
+      child: Card(
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: SizedBox(
+            child: Form(
+              key: _formkey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(height: 20),
+                  TextFormField(
+                      maxLines: 3,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(), labelText: 'Encuesta : '),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Ingrese algun caracter";
+                        }
+                        //else {
+                        //  Aqui irian los de la encuesta
+                        //}
+                      }),
+                  SizedBox(height: 20),
+                  TextFormField(
+                      maxLines: 3,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(), labelText: 'Comentario : '),
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Ingrese algun caracter";
+                        } else {
+                          if (!_esComentario(value.toString())) {
+                            return 'Ingrese solo letras y espacios';
+                          }
+                        }
+                      }),
+                  SizedBox(height: 20),
+                  Center(
+                      child: (Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            ElevatedButton(
+                              onPressed: () {
+                                if (_formkey.currentState!.validate()) {
+                                  Scaffold.of(context).showSnackBar(
+                                      SnackBar(content: Text("Procesando datos...")));
+                                }
+                              },
+                              child: Text('Enviar', style: TextStyle(fontSize: 20)),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {},
+                              child: Text('Cancelar',
+                                  style: TextStyle(color: Colors.white, fontSize: 20)),
+                              style: ElevatedButton.styleFrom(primary: Colors.red),
+                            )
+                          ])))
+                ],
+              )),
+            ),
+          ),
+        ),
+      );
   }
 }
