@@ -50,7 +50,7 @@ class _Data_Profile extends State<Data_Profile> {
 
     return Scaffold(
         body: Container(
-      margin: EdgeInsets.only(top: 225.0, right: 45.0, left: 45.0),
+      margin: EdgeInsets.only(top: 250.0, right: 45.0, left: 45.0),
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           CampoText1(),
