@@ -41,9 +41,9 @@ class _registerinciState extends State<registerinci>{
           TextFormField(
             decoration: InputDecoration(labelText: 'Foto (Opcional) : '),
             validator: (value) {
-              if (value!.isEmpty) {
-                return 'Ingrese el status';
-              }
+              // if (value!.isEmpty) {
+              //   return 'Ingrese el status';
+              // }
             },
           ),
           Padding(
