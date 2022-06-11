@@ -1,25 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+// Importar
+import 'home.dart';
 
-import 'incidents_list.dart';
+import 'users/registerr.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  // This widget is the root of your application.
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyApp();
+  }
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
+class _MyApp extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Home',
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text("Menu Principal"),
-          ),
-          body: ReviewList(),
-        ));
+        home: Scaffold(body: homeIncidents()
+            //body: RegisterScreen(),
+            ));
   }
 }
