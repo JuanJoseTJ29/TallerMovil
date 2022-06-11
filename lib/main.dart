@@ -5,6 +5,8 @@ import 'dart:convert';
 // Importar
 import 'Users/register.dart';
 import 'Users/login.dart';
+import 'users/loginn.dart';
+import 'users/registerr.dart';
 
 void main() => runApp(MyApp());
 
@@ -24,7 +26,7 @@ class _MyApp extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'Home',
         home: Scaffold(
-          body: LoginPage(),
+          body: RegisterScreen(),
         ));
   }
 }
