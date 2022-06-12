@@ -20,8 +20,8 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: (
-            AppBar(title: Text('hola'))),
-        body: search(),
+            AppBar(title: Text('Editar incidencias'))),
+        body: incidence(),
       ),
     );
   }
