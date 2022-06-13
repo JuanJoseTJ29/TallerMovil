@@ -8,7 +8,7 @@ class ProfileUsers extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(children: <Widget>[
       Data_Profile(),
-      Header_Profile("assets/images/people_1.jpeg", "Juana Jose"),
+      Header_Profile("assets/images/people_1.jpeg", "Juan Jose"),
     ]);
   }
 }

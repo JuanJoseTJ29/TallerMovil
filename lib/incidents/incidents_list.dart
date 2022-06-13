@@ -36,13 +36,15 @@ class _ReviewList extends State<ReviewList> {
           ),
         ),
       ),
-      // crossAxisAlignment: CrossAxisAlignment.start,
       body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: <Widget>[
-              Incident("assets/images/people_1.jpeg", "Perdida de Carnet",
-                  "Varuna Yasas", "Lorem Ipsum is simply dummy text"),
+              Incident(
+                  "assets/images/people_1.jpeg",
+                  "Perdida de Carnet",
+                  "Varuna Yasas",
+                  "Lorem Ipsum is simply dummy text of the printing"),
               Incident(
                   "assets/images/people_2.jpg",
                   "Computadora sin funcionamiento",
@@ -70,21 +72,6 @@ class _ReviewList extends State<ReviewList> {
                   "Lorem Ipsum is simply dummy text of the printing"),
             ],
           )),
-      /*   bottomNavigationBar: Theme(
-          data: Theme.of(context)
-              .copyWith(canvasColor: Colors.white, primaryColor: Colors.purple),
-          child: BottomNavigationBar(
-              //Se activa la funcion
-              onTap: onTapTapped,
-              currentIndex: indexTap,
-              items: [
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.search), label: "Buscar"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.person), label: "Perfil"),
-              ]),
-        )*/
     );
   }
 }
