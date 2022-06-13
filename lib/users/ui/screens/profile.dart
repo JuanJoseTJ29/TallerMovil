@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'profile_header.dart';
-import 'profile_data.dart';
+import '../widgets/profile_header.dart';
+import '../widgets/profile_data.dart';
 
 class ProfileUsers extends StatelessWidget {
   @override

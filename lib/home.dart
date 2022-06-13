@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 //Para importar clases
 
-import 'incidents/incidents_list.dart';
+import 'incidents/ui/screens/incidents_list.dart';
 import 'search_incidents.dart';
-import 'users/profile.dart';
+import 'users/ui/screens/profile.dart';
 import 'users/loginn.dart';
 import 'users/registerr.dart';
 

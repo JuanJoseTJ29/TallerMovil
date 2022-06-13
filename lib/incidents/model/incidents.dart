@@ -1,7 +1,7 @@
 //Importamos el paquete de material
 import 'package:flutter/material.dart';
 
-import 'perfilincidencia.dart';
+import '../ui/screens/perfilincidencia.dart';
 
 //Creamos la clase DescriptionPlace que hereda de la clase StatelessWidget
 class Incident extends StatelessWidget {
