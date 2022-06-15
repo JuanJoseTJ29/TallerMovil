@@ -5,10 +5,10 @@ import 'package:proyectomovil/Services/auth_services.dart';
 import 'package:proyectomovil/Services/globals.dart';
 import 'package:proyectomovil/rounded_button.dart';
 import 'package:http/http.dart' as http;
-import '../incidents/ui/screens/incidents_list.dart';
-import '../home.dart';
+import '../../../incidents/ui/screens/list_incidents.dart';
+import '../../../home.dart';
 
-import 'ui/screens/home_screen.dart';
+import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);

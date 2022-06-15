@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 //Para importar clases
 
-import 'incidents/ui/screens/incidents_list.dart';
+import 'incidents/ui/screens/list_incidents.dart';
 import 'search_incidents.dart';
-import 'users/ui/screens/profile.dart';
-import 'users/loginn.dart';
-import 'users/registerr.dart';
+import 'users/ui/screens/profile_user.dart';
 
 class homeIncidents extends StatefulWidget {
   @override

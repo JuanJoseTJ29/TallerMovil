@@ -5,11 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:proyectomovil/Services/auth_services.dart';
 import 'package:proyectomovil/Services/globals.dart';
 
-import '../rounded_button.dart';
-import 'ui/screens/home_screen.dart';
-import 'loginn.dart';
+import '../../../rounded_button.dart';
+import 'home_screen.dart';
+import 'login_user.dart';
 import 'package:http/http.dart' as http;
-import '../home.dart';
+import '../../../home.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);

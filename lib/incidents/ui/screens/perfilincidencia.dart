@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'editIncidence.dart';
-import 'incidents_list.dart';
+import 'edit_incidents.dart';
+import 'list_incidents.dart';
 import '../../../search_incidents.dart';
-import '../../../users/ui/screens/profile.dart';
+import '../../../users/ui/screens/profile_user.dart';
 
 class perfilIncidencia extends StatefulWidget {
   const perfilIncidencia({Key? key}) : super(key: key);
