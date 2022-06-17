@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyectomovil/main.dart';
 
-import '../../model/incidents.dart';
+import '../widgets/incidents.dart';
 
 class ReviewList extends StatefulWidget {
   const ReviewList({Key? key}) : super(key: key);

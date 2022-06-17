@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 //Para importar clases
 
 import 'incidents/ui/screens/list_incidents.dart';
-import 'search_incidents.dart';
+import 'incidents/ui/screens/search_incidents.dart';
 import 'users/ui/screens/profile_user.dart';
 
 class homeIncidents extends StatefulWidget {

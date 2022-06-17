@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'edit_incidents.dart';
 import 'list_incidents.dart';
-import '../../../search_incidents.dart';
+import 'search_incidents.dart';
 import '../../../users/ui/screens/profile_user.dart';
 
-class perfilIncidencia extends StatefulWidget {
-  const perfilIncidencia({Key? key}) : super(key: key);
+class Detail_Incidencia extends StatefulWidget {
+  const Detail_Incidencia({Key? key}) : super(key: key);
   @override
-  _perfilIncidenciaState createState() => _perfilIncidenciaState();
+  _Detail_Incidencia createState() => _Detail_Incidencia();
 }
 
-class _perfilIncidenciaState extends State<perfilIncidencia> {
+class _Detail_Incidencia extends State<Detail_Incidencia> {
   int indexTap = 0;
 
   static var _pages = <Widget>[ReviewList(), SearchIncidents(), ProfileUsers()];
