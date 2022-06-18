@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 //Creamos la clase DescriptionPlace que hereda de la clase StatelessWidget
 class Incident extends StatelessWidget {
   //Variable para el path de la imagen
-  String pathImage = "assets/images/people_1.jpeg";
+  String pathImage = "assets/images/robo.png";
   //Variables
   String nameIncident = "Nombre Incidencia";
-  String categoryIncident = "Perdida de carnet";
+  String categoryIncident = "Diferentes";
   String comment =
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry";
   //Constructor
