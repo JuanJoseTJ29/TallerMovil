@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'incidents/ui/screens/list_incidents.dart';
 import 'incidents/ui/screens/search_incidents.dart';
 import 'users/ui/screens/profile_user.dart';
+import 'users/ui/screens/encuesta_screen.dart';
 
 class homeIncidents extends StatefulWidget {
   @override
@@ -19,7 +20,8 @@ class _homeIncidents extends State<homeIncidents> {
   final List<Widget> widgetsChildren = [
     //Para dar una lista de metodos
     ReviewList(),
-    SearchIncidents(),
+    // SearchIncidents(),
+    EncuestaView(),
     ProfileUsers()
   ];
 
@@ -45,8 +47,8 @@ class _homeIncidents extends State<homeIncidents> {
             currentIndex: indexTap,
             items: [
               BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.search), label: "Buscar"),
+              // BottomNavigationBarItem(icon: Icon(Icons.search), label: "Buscar"),
+              BottomNavigationBarItem(icon: Icon(Icons.calendar_month), label:"Encuesta"),
               BottomNavigationBarItem(icon: Icon(Icons.person), label: "Perfil")
             ]),
       ),
