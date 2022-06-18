@@ -35,7 +35,7 @@ class Incident extends StatelessWidget {
             ),
       ),
     );
-
+    
     final Incidentcategory = Container(
       margin: EdgeInsets.only(top: 10.0),
       child: Text(
