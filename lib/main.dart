@@ -1,11 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyectomovil/login.dart';
-import 'package:proyectomovil/registerinci.dart';
-import 'package:proyectomovil/register.dart';
-import 'package:proyectomovil/incidencias_catergo.dart';
-import 'package:proyectomovil/register.dart';
-
-
+import 'incidencias_catergo.dart';
 
 
 void main() {
