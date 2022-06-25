@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:proyectomovil/Services/auth_services.dart';
 import 'package:proyectomovil/Services/globals.dart';
-
+import '../../../incidents/ui/screens/list_incidents.dart';
 import '../widgets/rounded_button.dart';
 
 import '../../../home.dart';
@@ -43,12 +43,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
       http.Response response = await AuthServices.register(
           _name, _codstud, _facultad, _escuela, _email, _password);
       Map responseMap = jsonDecode(response.body);
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (BuildContext context) => const ReviewList(),
+          ));
       if (response.statusCode == 200) {
-        Navigator.push(
+        /*Navigator.push(
             context,
             MaterialPageRoute(
               builder: (BuildContext context) => const HomeScreen(),
-            ));
+            ));*/
+
       } else {
         errorSnackBar(context, responseMap.values.first[0]);
       }
@@ -72,7 +78,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           ),
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           children: [

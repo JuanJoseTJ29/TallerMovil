@@ -3,6 +3,8 @@ import 'edit_incidents.dart';
 import 'list_incidents.dart';
 import 'search_incidents.dart';
 import '../../../users/ui/screens/profile_user.dart';
+import '../screens/registerinci.dart';
+import '../../../Encuesta.dart';
 
 class Detail_Incidencia extends StatefulWidget {
   const Detail_Incidencia({Key? key}) : super(key: key);
@@ -12,8 +14,14 @@ class Detail_Incidencia extends StatefulWidget {
 
 class _Detail_Incidencia extends State<Detail_Incidencia> {
   int indexTap = 0;
-
-  static var _pages = <Widget>[ReviewList(), SearchIncidents(), ProfileUsers()];
+  final List<Widget> widgetsChildren = [
+    //Para dar una lista de metodos
+    ReviewList(),
+    SearchIncidents(),
+    ProfileUsers(),
+    registerinci(),
+    Encuesta()
+  ];
 
   void onTapTapped(int index) {
     setState(() {
@@ -145,13 +153,22 @@ class _Detail_Incidencia extends State<Detail_Incidencia> {
               currentIndex: indexTap,
               onTap: (int index) => setState(() => indexTap = index),
               items: [
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.search), label: "Buscar"),
+                    icon: Icon(Icons.home, color: Colors.lightBlue),
+                    label: "Home"),
                 BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
+                    icon: Icon(Icons.search, color: Colors.lightBlue),
+                    label: "Buscar"),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person, color: Colors.lightBlue),
                   label: "Perfil",
                 ),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.book, color: Colors.lightBlue),
+                    label: "Registrar incidencia"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.start, color: Colors.lightBlue),
+                    label: "Formulario")
               ]),
         ));
   }

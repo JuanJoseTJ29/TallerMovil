@@ -47,7 +47,12 @@ class _homeIncidents extends State<homeIncidents> {
               BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
               BottomNavigationBarItem(
                   icon: Icon(Icons.search), label: "Buscar"),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: "Perfil")
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person), label: "Perfil"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.book), label: "Registrar incidencia"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.start), label: "Fromulario"),
             ]),
       ),
     );

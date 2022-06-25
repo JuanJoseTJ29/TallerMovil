@@ -93,7 +93,7 @@ class _incidenceState extends State<incidence_edit> {
               items: [
                 BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.search), label: "Buscar"),
+                    icon: Icon(Icons.search), label: "encontrar"),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.person), label: "Perfil"),
               ]),

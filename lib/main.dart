@@ -5,6 +5,8 @@ import 'home.dart';
 
 import 'users/ui/screens/register_user.dart';
 import 'users/ui/screens/login_user.dart';
+import 'incidents/ui/screens/list_incidents.dart';
+import 'incidents/ui/screens/registerinci.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,8 +25,8 @@ class _MyApp extends State<MyApp> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Home',
-        home: Scaffold(body: homeIncidents()
-            //body: RegisterScreen(),
+        home: Scaffold(body: ReviewList()
+            //body: RegisterScreen(),   registerinci(), ReviewList()
             ));
   }
 }
