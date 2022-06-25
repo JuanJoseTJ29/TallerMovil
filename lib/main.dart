@@ -25,11 +25,7 @@ class _MyApp extends State<MyApp> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Home',
-<<<<<<< HEAD
         home: Scaffold(body: RegisterScreen()
-=======
-        home: Scaffold(body: homeIncidents()
->>>>>>> 653a8cdd3e45cae78e44b1567d98c52c6b9774af
             //body: RegisterScreen(),   registerinci(), ReviewList()
             ));
   }

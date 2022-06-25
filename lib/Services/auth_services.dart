@@ -25,9 +25,9 @@ class AuthServices {
     return response;
   }
 
-  static Future<http.Response> login(String email, String password) async {
+  static Future<http.Response> login(String correo, String password) async {
     Map data = {
-      "email": email,
+      "correo": correo,
       "password": password,
     };
     var body = json.encode(data);
