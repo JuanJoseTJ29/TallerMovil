@@ -84,6 +84,11 @@ flutter:
     - assets/images/compumal.jpg
     - assets/images/sagua.png
     - assets/images/sluz.jpg
+    - assets/images/electricidad.jpg
+    - assets/images/incendio.jpg
+    - assets/images/objperdidos.jpg
+    - assets/images/pelea.jpg
+    - assets/images/robo.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
