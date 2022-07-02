@@ -26,4 +26,3 @@ class ProfileUsers extends StatelessWidget {
     );
   }
 }
-
