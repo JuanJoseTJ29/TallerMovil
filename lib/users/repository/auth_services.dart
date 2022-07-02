@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:proyectomovil/Services/globals.dart';
+import 'package:proyectomovil/users/repository/globals.dart';
 import 'package:http/http.dart' as http;
 
 class AuthServices {
@@ -15,7 +15,7 @@ class AuthServices {
       "password": password,
     };
     var body = json.encode(data);
-    var url = Uri.parse(baseURL + 'auth/register');
+    var url = Uri.parse(baseURL + '/register');
     http.Response response = await http.post(
       url,
       headers: headers,
@@ -25,13 +25,33 @@ class AuthServices {
     return response;
   }
 
-  static Future<http.Response> login(String email, String password) async {
+  static Future<http.Response> login(String correo, String password) async {
     Map data = {
-      "email": email,
+      "correo": correo,
       "password": password,
     };
     var body = json.encode(data);
-    var url = Uri.parse(baseURL + 'auth/login');
+    var url = Uri.parse(baseURL + '/login');
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+    print(response.body);
+    return response;
+  }
+
+  static Future<http.Response> mostrar(String id, String name, String codstud,
+      String facultad, String escuela) async {
+    Map data = {
+      "id": id,
+      "name": name,
+      "codstud": codstud,
+      "facultad": facultad,
+      "escuela": escuela,
+    };
+    var body = json.encode(data);
+    var url = Uri.parse(baseURL + '/users');
     http.Response response = await http.post(
       url,
       headers: headers,

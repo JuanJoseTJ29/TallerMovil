@@ -5,6 +5,9 @@ import 'incidents/ui/screens/list_incidents.dart';
 import 'incidents/ui/screens/search_incidents.dart';
 import 'users/ui/screens/profile_user.dart';
 
+import 'Encuesta.dart';
+import 'incidents/ui/screens/registerinci.dart';
+
 class homeIncidents extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -20,7 +23,9 @@ class _homeIncidents extends State<homeIncidents> {
     //Para dar una lista de metodos
     ReviewList(),
     SearchIncidents(),
-    ProfileUsers()
+    ProfileUsers(),
+    registerinci(),
+    Encuesta()
   ];
 
   //Metodo para dar una evento
@@ -44,10 +49,22 @@ class _homeIncidents extends State<homeIncidents> {
             onTap: onTapTapped,
             currentIndex: indexTap,
             items: [
-              BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.search), label: "Buscar"),
-              BottomNavigationBarItem(icon: Icon(Icons.person), label: "Perfil")
+                  icon: Icon(Icons.home, color: Colors.lightBlue),
+                  label: "Home"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.search, color: Colors.lightBlue),
+                  label: "Buscar"),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person, color: Colors.lightBlue),
+                label: "Perfil",
+              ),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.book, color: Colors.lightBlue),
+                  label: "Registrar incidencia"),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.start, color: Colors.lightBlue),
+                  label: "Formulario")
             ]),
       ),
     );
