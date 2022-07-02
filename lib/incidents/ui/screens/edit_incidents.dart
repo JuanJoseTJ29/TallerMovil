@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+import 'list_incidents.dart';
+import 'search_incidents.dart';
+import '../../../users/ui/screens/profile_user.dart';
+
+import '../../../Encuesta.dart';
+import 'registerinci.dart';
+
 class incidence_edit extends StatefulWidget {
   const incidence_edit({Key? key}) : super(key: key);
   @override
@@ -8,7 +15,18 @@ class incidence_edit extends StatefulWidget {
 
 class _incidenceState extends State<incidence_edit> {
   final _formKey = GlobalKey<FormState>();
+  //Indice para acceder a los elementos
   int indexTap = 0;
+  final List<Widget> widgetsChildren = [
+    //Para dar una lista de metodos
+    ReviewList(),
+    SearchIncidents(),
+    ProfileUsers(),
+    registerinci(),
+    Encuesta()
+  ];
+
+  //Metodo para dar una evento
   void onTapTapped(int index) {
     setState(() {
       indexTap = index;
@@ -91,12 +109,24 @@ class _incidenceState extends State<incidence_edit> {
               onTap: onTapTapped,
               currentIndex: indexTap,
               items: [
-                BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.search), label: "Buscar"),
+                    icon: Icon(Icons.home, color: Colors.lightBlue),
+                    label: "Home"),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.person), label: "Perfil"),
+                    icon: Icon(Icons.search, color: Colors.lightBlue),
+                    label: "Buscar"),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person, color: Colors.lightBlue),
+                  label: "Perfil",
+                ),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.book, color: Colors.lightBlue),
+                    label: "Registrar incidencia"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.start, color: Colors.lightBlue),
+                    label: "Formulario")
               ]),
         ));
   }
 }
+

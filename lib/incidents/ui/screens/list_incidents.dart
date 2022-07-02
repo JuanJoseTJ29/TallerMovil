@@ -3,6 +3,8 @@ import 'package:proyectomovil/main.dart';
 
 import '../widgets/incidents.dart';
 
+import '../../../home.dart';
+
 class ReviewList extends StatefulWidget {
   const ReviewList({Key? key}) : super(key: key);
 
@@ -36,37 +38,37 @@ class _ReviewList extends State<ReviewList> {
           ),
         ),
       ),
-      body: Padding(
+      body: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(
             children: <Widget>[
               Incident(
-                  "assets/images/people_1.jpeg",
+                  "assets/images/carnet2.jpg",
                   "Perdida de Carnet",
                   "Varuna Yasas",
                   "Lorem Ipsum is simply dummy text of the printing"),
               Incident(
-                  "assets/images/people_2.jpg",
+                  "assets/images/compumal.jpg",
                   "Computadora sin funcionamiento",
                   "Anahí Salgado",
                   "Lorem Ipsum is simply dummy text of the printing"),
               Incident(
-                  "assets/images/people_3.jpg",
+                  "assets/images/carnet.jpg",
                   "Perdida de Carnet",
                   "Gissele Thomas",
                   "Lorem Ipsum is simply dummy text of the printing"),
               Incident(
-                  "assets/images/people_4.jpg",
+                  "assets/images/carnet2.jpg",
                   "Perdida de Carnet",
                   "Varuna Yasas",
                   "Lorem Ipsum is simply dummy text of the printing"),
               Incident(
-                  "assets/images/people_5.jpg",
+                  "assets/images/sluz.jpg",
                   "Facultad sin Luz",
                   "Anahí Salgado",
                   "Lorem Ipsum is simply dummy text of the printing"),
               Incident(
-                  "assets/images/people_6.jpg",
+                  "assets/images/sagua.png",
                   "Facultad sin Agua",
                   "Gissele Thomas",
                   "Lorem Ipsum is simply dummy text of the printing"),
