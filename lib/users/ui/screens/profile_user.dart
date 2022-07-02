@@ -21,7 +21,7 @@ class ProfileUsers extends StatelessWidget {
       ),
       body: Stack(children: <Widget>[
         Data_Profile(),
-        Header_Profile("assets/images/people_1.jpeg", "Juan Jose"),
+        Header_Profile("assets/images/perfilperfil.jpg", ""),
       ]),
     );
   }

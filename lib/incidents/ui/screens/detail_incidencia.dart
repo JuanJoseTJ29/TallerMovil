@@ -55,9 +55,9 @@ class _Detail_Incidencia extends State<Detail_Incidencia> {
                 ),
                 Align(
                   alignment: AlignmentDirectional(-0.98, 0.1),
-                  child: Text('Perdida de Carnet!',
+                  child: Text('Perdida de Carnet univeristario!',
                       style: TextStyle(
-                          color: Color.fromARGB(255, 18, 183, 43),
+                          color: Color.fromARGB(255, 8, 137, 236),
                           fontWeight: FontWeight.w800,
                           fontSize: 50)),
                 ),
@@ -76,7 +76,7 @@ class _Detail_Incidencia extends State<Detail_Incidencia> {
                 Align(
                   alignment: AlignmentDirectional(-0.05, -0.05),
                   child: Image.asset(
-                    'assets/images/carnet.jpg',
+                    'assets/images/carnet2.jpg',
                     width: 200,
                     height: 180,
                     fit: BoxFit.cover,
@@ -93,7 +93,7 @@ class _Detail_Incidencia extends State<Detail_Incidencia> {
                   padding: EdgeInsets.all(5.0),
                 ),
                 Text(
-                  'Se me perdio el carnet en la facultad de letras\nPor favor ayudenme a encontrarlo\nsi alguien lo ve comunicarse por favor.',
+                  'Se me perdio el carnet en la facultad de letras\nPor favor ayudenme a encontrarlo si alguien lo \nve por favor comunicarse con el numero:\n948971165.',
                   textAlign: TextAlign.justify,
                 ),
                 Padding(

@@ -84,7 +84,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (BuildContext context) => const ReviewList(),
+            builder: (BuildContext context) => const LoginScreen(),
           ));
       if (response.statusCode == 200) {
         /*Navigator.push(

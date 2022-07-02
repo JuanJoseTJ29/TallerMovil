@@ -69,18 +69,18 @@ class _incidenceState extends State<incidence_edit> {
               },
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'Descripcion : '),
+              decoration: InputDecoration(labelText: 'Categoria : '),
               validator: (value) {
                 if (value!.isEmpty) {
-                  return 'Ingrese la descripcion';
+                  return 'Ingrese la categoria';
                 }
               },
             ),
             TextFormField(
-              decoration: InputDecoration(labelText: 'Status : '),
+              decoration: InputDecoration(labelText: 'Descripción : '),
               validator: (value) {
                 if (value!.isEmpty) {
-                  return 'Ingrese el status';
+                  return 'Ingrese la descripción';
                 }
               },
             ),
@@ -94,7 +94,7 @@ class _incidenceState extends State<incidence_edit> {
                         SnackBar(content: Text('Accesando al sistema')));
                   }
                 },
-                child: Text('Entrar'),
+                child: Text('Editar'),
                 color: Colors.blue,
                 textColor: Colors.white,
               ),
@@ -129,4 +129,3 @@ class _incidenceState extends State<incidence_edit> {
         ));
   }
 }
-

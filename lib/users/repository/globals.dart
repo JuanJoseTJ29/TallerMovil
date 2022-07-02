@@ -8,7 +8,7 @@ const Map<String, String> headers = {"Content-Type": "application/json"};
 errorSnackBar(BuildContext context, String text) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     backgroundColor: Colors.red,
-    content: Text(text),
+    content: Text('Usuario o Contraseña equivocada'),
     duration: const Duration(seconds: 1),
   ));
 }

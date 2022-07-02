@@ -25,7 +25,7 @@ class _homeIncidents extends State<homeIncidents> {
     SearchIncidents(),
     ProfileUsers(),
     registerinci(),
-    Encuesta()
+    Encuesta(),
   ];
 
   //Metodo para dar una evento
@@ -53,8 +53,8 @@ class _homeIncidents extends State<homeIncidents> {
                   icon: Icon(Icons.home, color: Colors.lightBlue),
                   label: "Home"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.search, color: Colors.lightBlue),
-                  label: "Buscar"),
+                  icon: Icon(Icons.dashboard, color: Colors.lightBlue),
+                  label: "Mis Registros"),
               BottomNavigationBarItem(
                 icon: Icon(Icons.person, color: Colors.lightBlue),
                 label: "Perfil",
@@ -63,8 +63,8 @@ class _homeIncidents extends State<homeIncidents> {
                   icon: Icon(Icons.book, color: Colors.lightBlue),
                   label: "Registrar incidencia"),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.start, color: Colors.lightBlue),
-                  label: "Formulario")
+                  icon: Icon(Icons.face, color: Colors.lightBlue),
+                  label: "chatAyuda")
             ]),
       ),
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../ui/widgets/incidents.dart';
+import 'edit_incidents.dart';
 
 class SearchIncidents extends StatelessWidget {
   @override
@@ -29,21 +30,31 @@ class SearchIncidents extends StatelessWidget {
               children: [
                 Incident(
                     "images/objperdidos.jpg",
-                    "Objetos perdidos",
-                    "Objetidos perdidos en facultadades",
-                    "Objetos perdidos que se encuentran en la universidad"),
+                    "Mochila perdida ayuda!!!",
+                    "Ingeniería de Sistemas e Informática",
+                    "Ayuda mi mochila desaparecio estaba en el 3er piso de la Fisi"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        Padding(
+                          padding: EdgeInsets.all(13.0),
+                        ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => incidence_edit()),
+                            );
+                          },
                           child: Text('Editar',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                          style: ElevatedButton.styleFrom(primary: Colors.blue),
+                                  TextStyle(color: Colors.white, fontSize: 12)),
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.blue, padding: EdgeInsets.all(4)),
                         ),
                         Padding(
                           padding: EdgeInsets.all(10.0),
@@ -52,8 +63,9 @@ class SearchIncidents extends StatelessWidget {
                           onPressed: () {},
                           child: Text('Eliminar',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                          style: ElevatedButton.styleFrom(primary: Colors.red),
+                                  TextStyle(color: Colors.white, fontSize: 12)),
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.red, padding: EdgeInsets.all(4)),
                         ),
                       ],
                     ),
@@ -65,9 +77,9 @@ class SearchIncidents extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Incident(
-                    "images/incendio.jpg",
-                    "Incidencia de Incendios",
-                    "Anahí Salgado",
+                    "images/microscopio.jpg",
+                    "Se rompió Microscopio",
+                    "Ciencias Biológica",
                     "Lorem Ipsum is simply dummy text of the printing"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -75,12 +87,22 @@ class SearchIncidents extends StatelessWidget {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        Padding(
+                          padding: EdgeInsets.all(13.0),
+                        ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => incidence_edit()),
+                            );
+                          },
                           child: Text('Editar',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                          style: ElevatedButton.styleFrom(primary: Colors.blue),
+                                  TextStyle(color: Colors.white, fontSize: 12)),
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.blue, padding: EdgeInsets.all(4)),
                         ),
                         Padding(
                           padding: EdgeInsets.all(10.0),
@@ -89,82 +111,9 @@ class SearchIncidents extends StatelessWidget {
                           onPressed: () {},
                           child: Text('Eliminar',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                          style: ElevatedButton.styleFrom(primary: Colors.red),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Incident(
-                    "images/electricidad.jpg",
-                    "Incidencia de fallos electricos",
-                    "Gissele Thomas",
-                    "Lorem Ipsum is simply dummy text of the printing"),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Text('Editar',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                          style: ElevatedButton.styleFrom(primary: Colors.blue),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(10.0),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Text('Eliminar',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                          style: ElevatedButton.styleFrom(primary: Colors.red),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Incident(
-                    "images/robo.png",
-                    "Incidencia de robo",
-                    "Varuna Yasas",
-                    "Lorem Ipsum is simply dummy text of the printing"),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Text('Editar',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                          style: ElevatedButton.styleFrom(primary: Colors.blue),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.all(10.0),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Text('Eliminar',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                          style: ElevatedButton.styleFrom(primary: Colors.red),
+                                  TextStyle(color: Colors.white, fontSize: 12)),
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.red, padding: EdgeInsets.all(4)),
                         ),
                       ],
                     ),
@@ -177,8 +126,8 @@ class SearchIncidents extends StatelessWidget {
               children: [
                 Incident(
                     "images/electricidad.jpg",
-                    "Incidencia de fallas electricas",
-                    "Anahí Salgado",
+                    "No hay luz en el 2do piso",
+                    "Letras",
                     "Lorem Ipsum is simply dummy text of the printing"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -186,12 +135,22 @@ class SearchIncidents extends StatelessWidget {
                     Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
+                        Padding(
+                          padding: EdgeInsets.all(13.0),
+                        ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => incidence_edit()),
+                            );
+                          },
                           child: Text('Editar',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                          style: ElevatedButton.styleFrom(primary: Colors.blue),
+                                  TextStyle(color: Colors.white, fontSize: 12)),
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.blue, padding: EdgeInsets.all(4)),
                         ),
                         Padding(
                           padding: EdgeInsets.all(10.0),
@@ -200,8 +159,105 @@ class SearchIncidents extends StatelessWidget {
                           onPressed: () {},
                           child: Text('Eliminar',
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 20)),
-                          style: ElevatedButton.styleFrom(primary: Colors.red),
+                                  TextStyle(color: Colors.white, fontSize: 12)),
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.red, padding: EdgeInsets.all(4)),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Incident(
+                    "images/Carpetasss.jpg",
+                    "Faltan carpetas en el salon 5B",
+                    "Ingeniería de Sistemas e Informática",
+                    "Lorem Ipsum is simply dummy text of the printing"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(13.0),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => incidence_edit()),
+                            );
+                          },
+                          child: Text('Editar',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12)),
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.blue, padding: EdgeInsets.all(4)),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text('Eliminar',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12)),
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.red, padding: EdgeInsets.all(4)),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Incident(
+                    "images/profeBR.jpg",
+                    "No hay docente para Tesis",
+                    "Ingeniería de Sistemas e Informática",
+                    "Lorem Ipsum is simply dummy text of the printing"),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.all(13.0),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => incidence_edit()),
+                            );
+                          },
+                          child: Text('Editar',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12)),
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.blue, padding: EdgeInsets.all(4)),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(10.0),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: Text('Eliminar',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 12)),
+                          style: ElevatedButton.styleFrom(
+                              primary: Colors.red, padding: EdgeInsets.all(4)),
                         ),
                       ],
                     ),

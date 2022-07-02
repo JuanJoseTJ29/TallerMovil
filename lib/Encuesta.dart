@@ -1,133 +1,87 @@
-// Pantalla realizada por Rodriguez Mirano Sebastian
+import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    //final titulo = "Encuesta";
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          centerTitle: true,
-          elevation: 0,
-          title: const Text(
-            'Encuesta',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-        body: Encuesta(),
-      ),
-    );
-  }
-}
+import 'Messages.dart';
 
 class Encuesta extends StatefulWidget {
+  const Encuesta({Key? key}) : super(key: key);
+
   @override
-  State<Encuesta> createState() => _EncuestaState();
+  _EncuestaState createState() => _EncuestaState();
 }
 
 class _EncuestaState extends State<Encuesta> {
-  static final RegExp _comentarioExp = RegExp(r"^[a-zA-Z\s]*$");
+  late DialogFlowtter dialogFlowtter;
+  final TextEditingController _controller = TextEditingController();
+  List<Map<String, dynamic>> messages = [];
 
-  final _formkey = GlobalKey<FormState>();
-
-  bool _esComentario(String str) {
-    return _comentarioExp.hasMatch(str.toLowerCase());
+  @override
+  void initState() {
+    DialogFlowtter.fromFile().then((instance) => dialogFlowtter = instance);
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.blue,
-          centerTitle: true,
-          elevation: 0,
-          title: const Text(
-            'Encuesta',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        centerTitle: true,
+        elevation: 0,
+        title: const Text(
+          'AvisaSM',
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
         ),
-        body: SingleChildScrollView(
-          child: Card(
-            child: Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: SizedBox(
-                child: Form(
-                    key: _formkey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: <Widget>[
-                        SizedBox(height: 20),
-                        TextFormField(
-                            maxLines: 3,
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Encuesta : '),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Ingrese algun caracter";
-                              }
-                              //else {
-                              //  Aqui irian los de la encuesta
-                              //}
-                            }),
-                        SizedBox(height: 20),
-                        TextFormField(
-                            maxLines: 3,
-                            decoration: InputDecoration(
-                                border: OutlineInputBorder(),
-                                labelText: 'Comentario : '),
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return "Ingrese algun caracter";
-                              } else {
-                                if (!_esComentario(value.toString())) {
-                                  return 'Ingrese solo letras y espacios';
-                                }
-                              }
-                            }),
-                        SizedBox(height: 20),
-                        Center(
-                            child: (Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: <Widget>[
-                              ElevatedButton(
-                                onPressed: () {
-                                  if (_formkey.currentState!.validate()) {
-                                    Scaffold.of(context).showSnackBar(SnackBar(
-                                        content: Text("Procesando datos...")));
-                                  }
-                                },
-                                child: Text('Enviar',
-                                    style: TextStyle(fontSize: 20)),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: Text('Cancelar',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 20)),
-                                style: ElevatedButton.styleFrom(
-                                    primary: Colors.red),
-                              )
-                            ])))
-                      ],
-                    )),
+      ),
+      body: Container(
+        child: Column(
+          children: [
+            Expanded(child: MessagesScreen(messages: messages)),
+            Container(
+              padding: EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+              color: Color.fromARGB(255, 17, 130, 251),
+              child: Row(
+                children: [
+                  Expanded(
+                      child: TextField(
+                    controller: _controller,
+                    style: TextStyle(color: Colors.white),
+                  )),
+                  IconButton(
+                      onPressed: () {
+                        sendMessage(_controller.text);
+                        _controller.clear();
+                      },
+                      icon: Icon(Icons.send))
+                ],
               ),
-            ),
-          ),
-        ));
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  sendMessage(String text) async {
+    if (text.isEmpty) {
+      print('Message is empty');
+    } else {
+      setState(() {
+        addMessage(Message(text: DialogText(text: [text])), true);
+      });
+
+      DetectIntentResponse response = await dialogFlowtter.detectIntent(
+          queryInput: QueryInput(text: TextInput(text: text)));
+      if (response.message == null) return;
+      setState(() {
+        addMessage(response.message!);
+      });
+    }
+  }
+
+  addMessage(Message message, [bool isUserMessage = false]) {
+    messages.add({'message': message, 'isUserMessage': isUserMessage});
   }
 }

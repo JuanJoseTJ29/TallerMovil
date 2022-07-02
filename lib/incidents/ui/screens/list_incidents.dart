@@ -44,7 +44,7 @@ class _ReviewList extends State<ReviewList> {
             children: <Widget>[
               Incident(
                   "assets/images/carnet2.jpg",
-                  "Perdida de Carnet",
+                  "Perdida de Carnet universitario!",
                   "Varuna Yasas",
                   "Lorem Ipsum is simply dummy text of the printing"),
               Incident(
@@ -53,23 +53,23 @@ class _ReviewList extends State<ReviewList> {
                   "Anahí Salgado",
                   "Lorem Ipsum is simply dummy text of the printing"),
               Incident(
-                  "assets/images/carnet.jpg",
-                  "Perdida de Carnet",
+                  "assets/images/celperdido.jpg",
+                  "Perdida de Celular Samsung",
                   "Gissele Thomas",
                   "Lorem Ipsum is simply dummy text of the printing"),
               Incident(
-                  "assets/images/carnet2.jpg",
-                  "Perdida de Carnet",
+                  "assets/images/carnet.jpg",
+                  "Perdida de Carnet de Biblioteca",
                   "Varuna Yasas",
                   "Lorem Ipsum is simply dummy text of the printing"),
               Incident(
                   "assets/images/sluz.jpg",
-                  "Facultad sin Luz",
+                  "No hay luz en la facultad",
                   "Anahí Salgado",
                   "Lorem Ipsum is simply dummy text of the printing"),
               Incident(
                   "assets/images/sagua.png",
-                  "Facultad sin Agua",
+                  "No hay agua en la facultad",
                   "Gissele Thomas",
                   "Lorem Ipsum is simply dummy text of the printing"),
             ],

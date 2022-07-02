@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class Header_Profile extends StatelessWidget {
   //variable con datos por defecto
 
-  String pathImage = "assets/images/people_1.jpeg";
+  String pathImage = "assets/images/perfilperfil.jpg";
 
-  String name = "Juana Jose";
+  String name = "Juan Jose";
 
   Header_Profile(this.pathImage, this.name);
   @override

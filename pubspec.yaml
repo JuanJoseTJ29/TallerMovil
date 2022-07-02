@@ -42,6 +42,7 @@ dependencies:
   dropdownfield: ^1.0.3
   dropdown_button2: ^1.6.2
   image_picker: ^0.8.4+4
+  dialog_flowtter:
 
 dev_dependencies:
   flutter_test:
@@ -86,6 +87,14 @@ flutter:
     - assets/images/objperdidos.jpg
     - assets/images/pelea.jpg
     - assets/images/robo.png
+    - assets/images/perfilperfil.jpg
+    - assets/images/Carpetasss.jpg
+    - assets/images/docente.jpg
+    - assets/images/microscopio.jpg
+    - assets/images/perfilperfil.jpg
+    - assets/images/profeBR.jpg
+    - assets/images/celperdido.jpg
+    - assets/dialog_flow_auth.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 

@@ -12,29 +12,49 @@ class Data_Profile extends StatefulWidget {
 class _Data_Profile extends State<Data_Profile> {
   @override
   Widget build(BuildContext context) {
+    Widget CampoText0() {
+      return Text(
+        'Juan Jose ',
+        textAlign: TextAlign.center,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(
+            fontWeight: FontWeight.bold, fontSize: 25, color: Colors.blue),
+      );
+    }
+
     Widget CampoText1() {
-      return TextField(
-        decoration: InputDecoration(hintText: "Facultad"),
+      return Text(
+        'Facultad: Ingeniería de Sistemas e Informática ',
+        textAlign: TextAlign.center,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       );
     }
 
     Widget CampoText2() {
-      return TextField(
-        decoration: InputDecoration(hintText: "Escuela Profesional"),
+      return Text(
+        'Escuela: Ingeniería de Software',
+        textAlign: TextAlign.center,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       );
     }
 
     Widget CampoText3() {
-      return TextField(
-        obscureText: true,
-        decoration: InputDecoration(hintText: "Contraseña"),
+      return Text(
+        'Código de Estudiante: 18200117',
+        textAlign: TextAlign.center,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       );
     }
 
     Widget CampoText4() {
-      return TextField(
-        obscureText: true,
-        decoration: InputDecoration(hintText: "Repetir Contraseña"),
+      return Text(
+        'Correo: juan490@gmail.com',
+        textAlign: TextAlign.center,
+        overflow: TextOverflow.ellipsis,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
       );
     }
 
@@ -53,6 +73,12 @@ class _Data_Profile extends State<Data_Profile> {
       margin: EdgeInsets.only(top: 250.0, right: 45.0, left: 45.0),
       child: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+          CampoText0(),
+          Container(
+            margin: EdgeInsets.only(top: 20),
+            decoration: BoxDecoration(
+                color: Colors.blue, borderRadius: BorderRadius.circular(10)),
+          ),
           CampoText1(),
           Container(
             margin: EdgeInsets.only(top: 20),

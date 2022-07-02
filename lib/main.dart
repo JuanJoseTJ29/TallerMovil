@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 // Importar
 import 'home.dart';
 
+import 'incidents/ui/screens/detail_incidencia.dart';
+import 'incidents/ui/screens/search_incidents.dart';
+import 'users/ui/screens/profile_user.dart';
 import 'users/ui/screens/register_user.dart';
 import 'users/ui/screens/login_user.dart';
 import 'incidents/ui/screens/list_incidents.dart';
@@ -26,7 +29,7 @@ class _MyApp extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'Home',
         home: Scaffold(body: RegisterScreen()
-            //body: RegisterScreen(),   registerinci(), ReviewList()
+            //body: RegisterScreen(),   registerinci(), ReviewList() , Detail_Incidencia() , SearchIncidents(), ReviewList()
             ));
   }
 }
