@@ -2,28 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:proyectomovil/editIncidence.dart';
 import 'package:proyectomovil/search.dart';
 
+// Importar
+import 'home.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'users/ui/screens/register_user.dart';
+import 'users/ui/screens/login_user.dart';
+import 'incidents/ui/screens/list_incidents.dart';
+import 'incidents/ui/screens/registerinci.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+void main() => runApp(MyApp());
 
+class MyApp extends StatefulWidget {
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        appBar: (
-            AppBar(title: Text('Editar incidencias'))),
-        body: incidence(),
-      ),
-    );
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyApp();
   }
 }
 
+class _MyApp extends State<MyApp> {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Home',
+        home: Scaffold(body: RegisterScreen()
+            //body: RegisterScreen(),   registerinci(), ReviewList()
+            ));
+  }
+}
