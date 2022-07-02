@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
 import 'incidencias_catergo.dart';
 
+// Importar
+import 'home.dart';
 
-void main() {
-  runApp(MyApp());
+import 'users/ui/screens/register_user.dart';
+import 'users/ui/screens/login_user.dart';
+import 'incidents/ui/screens/list_incidents.dart';
+import 'incidents/ui/screens/registerinci.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatefulWidget {
+  // This widget is the root of your application.
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyApp();
+  }
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-
+class _MyApp extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Register',
-      theme: ThemeData(
-        primaryColor: Colors.blue
-        ),
-        home: Scaffold(
-          appBar: (
-            AppBar(title: Text('Mis Reportes'))),
-          body: incidencias_catergo(),
-        ),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Home',
+        home: Scaffold(body: RegisterScreen()
+            //body: RegisterScreen(),   registerinci(), ReviewList()
+            ));
   }
-  
 }
