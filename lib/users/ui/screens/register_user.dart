@@ -1,4 +1,5 @@
 import 'dart:convert';
+//import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,23 +21,14 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  /*TextEditingController nameController = TextEditingController();
-  TextEditingController codstudController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController facuController = TextEditingController();
-  TextEditingController escuelaController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  final _text = TextEditingController();*/
 
   static final RegExp _nombreExp = RegExp(r"^[a-zA-Z]+$");
   static final RegExp _codigoExp = RegExp(r"^[0-9]{8}$");
   static final RegExp _emailExp = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-  static final RegExp _facuExp = RegExp(r"^[a-zA-Z\s]*$");
-  static final RegExp _escuelaExp = RegExp(r"^[a-zA-Z\s]*$");
   static final RegExp _passwordExp =
-      RegExp(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$");
+  RegExp(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$");
+
   // Minimo 8 caracteres, debe contener letras y numeros
   bool _esNombre(String str) {
     return _nombreExp.hasMatch(str.toLowerCase());
@@ -48,14 +40,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   bool _esEmail(String str) {
     return _emailExp.hasMatch(str.toLowerCase());
-  }
-
-  bool _esFacu(String str) {
-    return _facuExp.hasMatch(str.toLowerCase());
-  }
-
-  bool _esEscuela(String str) {
-    return _escuelaExp.hasMatch(str.toLowerCase());
   }
 
   bool _esPassword(String str) {
@@ -71,11 +55,38 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String _facultad = '';
   String _escuela = '';
 
-  //bool _validate = true;
+  String _selectedFacultad = "Facultad de Ingenieria de Sistemas";
+  var facultades = {"Facultad de Ingenieria de Sistemas": "FISI",
+    "Facultad de Ciencias Físicas": "FCF"};
+
+  List _facultades = [];
+
+  FacultadesDependentDropDown() {
+    facultades.forEach((key, value) {
+      _facultades.add(key);
+    });
+  }
+
+  String _selectedEscuela = "";
+  var escuelas = {"Escuela Profesional de Ingenieria de Sistemas": "FISI",
+    "Escuela Profesional de Ingenieria de Software": "FISI",
+    "Escuela Profesional de Fisica": "FCF",
+    "Escuela Profesional de Ingenieria de Mecanica de Fluidos": "FCF"};
+
+  List _escuelas = [];
+
+  EscuelasDependentDropDown(facultadSiglas) {
+    escuelas.forEach((key, value) {
+      if (facultadSiglas == value) {
+        _escuelas.add(key);
+      }
+    });
+    _selectedEscuela = _escuelas[0];
+  }
 
   createAccountPressed() async {
     bool emailValid = RegExp(
-            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(_email);
     if (emailValid) {
       http.Response response = await AuthServices.register(
@@ -110,6 +121,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
       } else
         return 0;
     }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    FacultadesDependentDropDown();
   }
 
   @override
@@ -197,49 +215,55 @@ class _RegisterScreenState extends State<RegisterScreen> {
               ),
               Container(
                 padding: EdgeInsets.all(5),
-                child: TextFormField(
-                  //controller: facuController,
+                child: DropdownButtonFormField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Facultad',
-                    //errorText: _validate ? 'Ingresa tu facultad' : null,
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(4),
+                    )
                   ),
-                  validator: (value) {
-                    switch (validator(value, _esFacu(value.toString()))) {
-                      case 1:
-                        return "Ingrese algun caracter";
-                      case 2:
-                        return "Ingrese una facultad correcta";
-                      case 0:
-                        return null;
-                    }
+                  value: _selectedFacultad,
+                  onChanged: (newValue) {
+                    setState(() {
+                      _facultades=[];
+                      _escuelas=[];
+                      EscuelasDependentDropDown(facultades[newValue]);
+                      _selectedFacultad= "$newValue";
+                      _facultad = "$newValue";
+                      FacultadesDependentDropDown();
+                    });
                   },
-                  onChanged: (value) {
-                    _facultad = value;
-                  },
+                  items: _facultades.map((facultades){
+                    return DropdownMenuItem(
+                        child: new Text(facultades),
+                        value: facultades,
+                    );
+                  }).toList(),
                 ),
               ),
               Container(
                 padding: EdgeInsets.all(5),
-                child: TextFormField(
-                  //controller: escuelaController,
+                child: DropdownButtonFormField(
                   decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Escuela',
-                    //errorText: _validate ? 'Ingresa tu escuela' : null,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4),
+                      )
                   ),
-                  validator: (value) {
-                    switch (validator(value, _esEscuela(value.toString()))) {
-                      case 1:
-                        return "Ingrese algun caracter";
-                      case 2:
-                        return "Ingrese una escuela correcta";
-                      case 0:
-                        return null;
-                    }
+                  value: _selectedEscuela,
+                  onChanged: (newValue) {
+                    setState(() {
+                      _selectedEscuela = "$newValue";
+                      _escuela = "$newValue";
+                    });
                   },
-                  onChanged: (value) {
-                    _escuela = value;
+                  items:_escuelas.map((escuelas){
+                    return DropdownMenuItem(
+                        child: new Text(escuelas),
+                        value: escuelas,
+                    );
+                  }).toList(),
+                  validator: (value) {
+                    print(value);
+                    return value == "" ? "Ingrese una escuela" : null;
                   },
                 ),
               ),
