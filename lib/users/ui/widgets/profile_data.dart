@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/edit_user.dart';
 
 //Se rellena con el color verde
 class Data_Profile extends StatefulWidget {
@@ -64,7 +65,12 @@ class _Data_Profile extends State<Data_Profile> {
           'Editar',
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const EditUserScreen()),
+          );
+        },
       );
     }
 

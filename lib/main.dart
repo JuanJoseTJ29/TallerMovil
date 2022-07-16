@@ -10,6 +10,7 @@ import 'users/ui/screens/register_user.dart';
 import 'users/ui/screens/login_user.dart';
 import 'incidents/ui/screens/list_incidents.dart';
 import 'incidents/ui/screens/registerinci.dart';
+import 'users/ui/screens/edit_user.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,7 +29,7 @@ class _MyApp extends State<MyApp> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Home',
-        home: Scaffold(body: RegisterScreen()
+        home: Scaffold(body: ProfileUsers()
             //body: RegisterScreen(),   registerinci(), ReviewList() , Detail_Incidencia() , SearchIncidents(), ReviewList()
             ));
   }
