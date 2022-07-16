@@ -4,8 +4,8 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:proyectomovil/users/repository/auth_services.dart';
-import 'package:proyectomovil/users/repository/globals.dart';
+import 'package:proyectomovil/users/bloc/users_bloc.dart';
+import 'package:proyectomovil/users/repository/users_repository.dart';
 import '../../../incidents/ui/screens/list_incidents.dart';
 import '../widgets/rounded_button.dart';
 
@@ -21,13 +21,12 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-
   static final RegExp _nombreExp = RegExp(r"^[a-zA-Z]+$");
   static final RegExp _codigoExp = RegExp(r"^[0-9]{8}$");
   static final RegExp _emailExp = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
   static final RegExp _passwordExp =
-  RegExp(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$");
+      RegExp(r"^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$");
 
   // Minimo 8 caracteres, debe contener letras y numeros
   bool _esNombre(String str) {
@@ -56,8 +55,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String _escuela = '';
 
   String _selectedFacultad = "Facultad de Ingenieria de Sistemas";
-  var facultades = {"Facultad de Ingenieria de Sistemas": "FISI",
-    "Facultad de Ciencias Físicas": "FCF"};
+  var facultades = {
+    "Facultad de Ingenieria de Sistemas": "FISI",
+    "Facultad de Ciencias Físicas": "FCF"
+  };
 
   List _facultades = [];
 
@@ -68,10 +69,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
   String _selectedEscuela = "";
-  var escuelas = {"Escuela Profesional de Ingenieria de Sistemas": "FISI",
+  var escuelas = {
+    "Escuela Profesional de Ingenieria de Sistemas": "FISI",
     "Escuela Profesional de Ingenieria de Software": "FISI",
     "Escuela Profesional de Fisica": "FCF",
-    "Escuela Profesional de Ingenieria de Mecanica de Fluidos": "FCF"};
+    "Escuela Profesional de Ingenieria de Mecanica de Fluidos": "FCF"
+  };
 
   List _escuelas = [];
 
@@ -86,7 +89,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   createAccountPressed() async {
     bool emailValid = RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+            r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(_email);
     if (emailValid) {
       http.Response response = await AuthServices.register(
@@ -217,25 +220,24 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 padding: EdgeInsets.all(5),
                 child: DropdownButtonFormField(
                   decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(4),
-                    )
-                  ),
+                      enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  )),
                   value: _selectedFacultad,
                   onChanged: (newValue) {
                     setState(() {
-                      _facultades=[];
-                      _escuelas=[];
+                      _facultades = [];
+                      _escuelas = [];
                       EscuelasDependentDropDown(facultades[newValue]);
-                      _selectedFacultad= "$newValue";
+                      _selectedFacultad = "$newValue";
                       _facultad = "$newValue";
                       FacultadesDependentDropDown();
                     });
                   },
-                  items: _facultades.map((facultades){
+                  items: _facultades.map((facultades) {
                     return DropdownMenuItem(
-                        child: new Text(facultades),
-                        value: facultades,
+                      child: new Text(facultades),
+                      value: facultades,
                     );
                   }).toList(),
                 ),
@@ -245,9 +247,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: DropdownButtonFormField(
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(4),
-                      )
-                  ),
+                    borderRadius: BorderRadius.circular(4),
+                  )),
                   value: _selectedEscuela,
                   onChanged: (newValue) {
                     setState(() {
@@ -255,10 +256,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       _escuela = "$newValue";
                     });
                   },
-                  items:_escuelas.map((escuelas){
+                  items: _escuelas.map((escuelas) {
                     return DropdownMenuItem(
-                        child: new Text(escuelas),
-                        value: escuelas,
+                      child: new Text(escuelas),
+                      value: escuelas,
                     );
                   }).toList(),
                   validator: (value) {

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:proyectomovil/users/repository/auth_services.dart';
-import 'package:proyectomovil/users/repository/globals.dart';
+import 'package:proyectomovil/users/bloc/users_bloc.dart';
+import 'package:proyectomovil/users/repository/users_repository.dart';
 import 'package:proyectomovil/users/ui/widgets/rounded_button.dart';
 import 'package:http/http.dart' as http;
 import '../../../incidents/ui/screens/list_incidents.dart';
