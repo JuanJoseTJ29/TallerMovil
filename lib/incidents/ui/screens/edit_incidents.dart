@@ -6,6 +6,17 @@ import '../../../users/ui/screens/profile_user.dart';
 
 import '../../../Encuesta.dart';
 import 'registerinci.dart';
+import 'dart:convert';
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'list_incidents.dart';
+import 'edit_incidents.dart';
+import 'package:flutter/rendering.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:image_picker/image_picker.dart';
+
+//import 'package:dropdown_formfield/dropdown_formfield.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
 
 class incidence_edit extends StatefulWidget {
   const incidence_edit({Key? key}) : super(key: key);
@@ -25,6 +36,14 @@ class _incidenceState extends State<incidence_edit> {
     registerinci(),
     Encuesta()
   ];
+  final List<String> items = [
+    'Objetos perdidos',
+    'Artefactos malogrados',
+    'Servicios Basicos',
+    'Administrativo',
+    'Laboratorio',
+  ];
+  String? selectedValue;
 
   //Metodo para dar una evento
   void onTapTapped(int index) {
@@ -49,83 +68,126 @@ class _incidenceState extends State<incidence_edit> {
             ),
           ),
         ),
-        body: Column(
-          key: _formKey,
-          children: <Widget>[
-            TextFormField(
-              decoration: InputDecoration(labelText: 'Titulo : '),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Ingrese el titulo';
-                }
-              },
-            ),
-            TextFormField(
-              decoration: InputDecoration(labelText: 'Lugar : '),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Ingrese el lugar';
-                }
-              },
-            ),
-            TextFormField(
-              decoration: InputDecoration(labelText: 'Categoria : '),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Ingrese la categoria';
-                }
-              },
-            ),
-            TextFormField(
-              decoration: InputDecoration(labelText: 'Descripción : '),
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Ingrese la descripción';
-                }
-              },
-            ),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 80, horizontal: 120),
-              child: RaisedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    Scaffold.of(context).showSnackBar(
-                        SnackBar(content: Text('Accesando al sistema')));
-                  }
-                },
-                child: Text('Editar'),
-                color: Colors.blue,
-                textColor: Colors.white,
-              ),
-            ),
-          ],
-        ),
-        bottomNavigationBar: Theme(
-          data: Theme.of(context)
-              .copyWith(canvasColor: Colors.white, primaryColor: Colors.purple),
-          child: BottomNavigationBar(
-              //Se activa la funcion
-              onTap: onTapTapped,
-              currentIndex: indexTap,
-              items: [
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.home, color: Colors.lightBlue),
-                    label: "Home"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.search, color: Colors.lightBlue),
-                    label: "Buscar"),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person, color: Colors.lightBlue),
-                  label: "Perfil",
+        body: SingleChildScrollView(
+            child: Column(
+              key: _formKey,
+              children: <Widget>[
+                Image.asset('assets/images/editar.jpg', height: 300),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Titulo : '),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Ingrese el titulo';
+                    }
+                  },
                 ),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.book, color: Colors.lightBlue),
-                    label: "Registrar incidencia"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.start, color: Colors.lightBlue),
-                    label: "Formulario")
-              ]),
-        ));
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Lugar : '),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Ingrese el lugar';
+                    }
+                  },
+                ),
+                Container(
+                  alignment: Alignment.topLeft,
+                  child: DropdownButton2(
+                    hint: Text(
+                      'Categoria',
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Theme.of(context).hintColor,
+                      ),
+                    ),
+                    items: items
+                        .map((item) => DropdownMenuItem<String>(
+                              value: item,
+                              child: Text(
+                                item,
+                                style: const TextStyle(
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ))
+                        .toList(),
+                    value: selectedValue,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedValue = value as String;
+                      });
+                    },
+
+                    //itemPadding: const EdgeInsets.only(left: 16, right: 16),
+                    //buttonPadding: const EdgeInsets.only(left: 5, right: 10),
+                  ),
+                ),
+                TextFormField(
+                  decoration: InputDecoration(labelText: 'Descripción : '),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Ingrese la descripción';
+                    }
+                  },
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      child: Text(
+                        'Editar',
+                      ),
+                      style: ElevatedButton.styleFrom(
+                        primary: Color.fromARGB(255, 59, 241, 31),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => incidence_edit()),
+                        );
+                      },
+                    ),
+                    ElevatedButton(
+                      child: Text(
+                        'Atras',
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          primary: Color.fromARGB(255, 52, 105, 203)),
+                      onPressed: () {},
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            // bottomNavigationBar: Theme(
+            //   data: Theme.of(context).copyWith(
+            //       canvasColor: Colors.white, primaryColor: Colors.purple),
+            //   child: BottomNavigationBar(
+            //       //Se activa la funcion
+            //       onTap: onTapTapped,
+            //       currentIndex: indexTap,
+            //       items: [
+            //         BottomNavigationBarItem(
+            //             icon: Icon(Icons.home, color: Colors.lightBlue),
+            //             label: "Home"),
+            //         BottomNavigationBarItem(
+            //             icon: Icon(Icons.search, color: Colors.lightBlue),
+            //             label: "Buscar"),
+            //         BottomNavigationBarItem(
+            //           icon: Icon(Icons.person, color: Colors.lightBlue),
+            //           label: "Perfil",
+            //         ),
+            //         BottomNavigationBarItem(
+            //             icon: Icon(Icons.book, color: Colors.lightBlue),
+            //             label: "Registrar incidencia"),
+            //         BottomNavigationBarItem(
+            //             icon: Icon(Icons.start, color: Colors.lightBlue),
+            //             label: "Formulario")
+            //       ]),
+            )
+    );
   }
 }
