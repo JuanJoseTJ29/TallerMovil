@@ -66,10 +66,7 @@ class _Data_Profile extends State<Data_Profile> {
           style: TextStyle(color: Colors.white, fontSize: 18),
         ),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const EditUserScreen()),
-          );
+          showAlertDialog(context);
         },
       );
     }
@@ -117,4 +114,45 @@ class _Data_Profile extends State<Data_Profile> {
       ),
     ));
   }
+}
+
+showAlertDialog(BuildContext context) {
+  // set up the buttons
+  Widget cancelButton = TextButton(
+    child: Text("Cancelar"),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+  Widget continueButton = TextButton(
+    child: Text("Editar"),
+    onPressed: () {
+      //edit user();
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const EditUserScreen()),
+      );
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Editar Usuario"),
+    content: Row(children: [
+      Image.asset('assets/images/advertencia.jpg', height: 80),
+      Text("¿Estas seguro que quieres editar tus datos?"),
+    ]),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }
