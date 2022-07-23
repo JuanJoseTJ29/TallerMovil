@@ -60,7 +60,9 @@ class SearchIncidents extends StatelessWidget {
                           padding: EdgeInsets.all(10.0),
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showAlertDialog(context);
+                          },
                           child: Text('Eliminar',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 12)),
@@ -108,7 +110,9 @@ class SearchIncidents extends StatelessWidget {
                           padding: EdgeInsets.all(10.0),
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showAlertDialog(context);
+                          },
                           child: Text('Eliminar',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 12)),
@@ -156,7 +160,9 @@ class SearchIncidents extends StatelessWidget {
                           padding: EdgeInsets.all(10.0),
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showAlertDialog(context);
+                          },
                           child: Text('Eliminar',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 12)),
@@ -204,7 +210,9 @@ class SearchIncidents extends StatelessWidget {
                           padding: EdgeInsets.all(10.0),
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showAlertDialog(context);
+                          },
                           child: Text('Eliminar',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 12)),
@@ -252,7 +260,9 @@ class SearchIncidents extends StatelessWidget {
                           padding: EdgeInsets.all(10.0),
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showAlertDialog(context);
+                          },
                           child: Text('Eliminar',
                               style:
                                   TextStyle(color: Colors.white, fontSize: 12)),
@@ -268,4 +278,41 @@ class SearchIncidents extends StatelessWidget {
           ],
         )));
   }
+}
+
+showAlertDialog(BuildContext context) {
+  // set up the buttons
+  Widget cancelButton = TextButton(
+    child: Text("Cancelar"),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+  Widget continueButton = TextButton(
+    child: Text("Elimnar"),
+    onPressed: () {
+      //edit user();
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Editar Usuario"),
+    content: Row(children: [
+      Image.asset('assets/images/advertencia.jpg', height: 80),
+      Text("¿Estas seguro que quieres eliminar esta incidencia?"),
+    ]),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }
