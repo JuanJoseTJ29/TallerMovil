@@ -60,4 +60,23 @@ class AuthServices {
     print(response.body);
     return response;
   }
+
+  static Future<http.Response> editar(String id, String name, String codstud,
+      String facultad, String escuela) async {
+    Map data = {
+      "name": name,
+      "codstud": codstud,
+      "facultad": facultad,
+      "escuela": escuela,
+    };
+    var body = json.encode(data);
+    var url = Uri.parse(baseURL + "/edituser/" + id);
+    http.Response response = await http.post(
+      url,
+      headers: headers,
+      body: body,
+    );
+    print(response.body);
+    return response;
+  }
 }

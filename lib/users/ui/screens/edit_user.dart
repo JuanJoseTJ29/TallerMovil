@@ -4,10 +4,13 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:proyectomovil/users/bloc/users_bloc.dart';
+import 'package:proyectomovil/users/ui/screens/profile_user.dart';
 //import 'package:proyectomovil/users/repository/auth_services.dart';
 //import 'package:proyectomovil/users/repository/globals.dart';
 import '../../../incidents/ui/screens/list_incidents.dart';
 import '../widgets/rounded_button.dart';
+import 'package:proyectomovil/users/repository/users_repository.dart';
 
 import '../../../home.dart';
 import 'home_screen.dart';
@@ -70,31 +73,18 @@ class _EditUserScreenState extends State<EditUserScreen> {
     _selectedEscuela = _escuelas[0];
   }
 
-  createAccountPressed() async {
-    /* emailValid = RegExp(
-        r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-        .hasMatch(_email);
-    if (emailValid) {
-      http.Response response = await AuthServices.register(
-          _name, _codstud, _facultad, _escuela, _email, _password);
-      Map responseMap = jsonDecode(response.body);
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (BuildContext context) => const LoginScreen(),
-          ));
-      if (response.statusCode == 200) {
-        /*Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => const HomeScreen(),
-            ));*/
-
-      } else {
-        errorSnackBar(context, responseMap.values.first[0]);
-      }
-    } else {
-      errorSnackBar(context, 'Datos invalidos');
+  editAccountPressed() async {
+    /*http.Response response = await AuthServices.editar(id, _name, _codstud,
+        _facultad, _escuela);
+    Map responseMap = jsonDecode(response.body);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (BuildContext context) => ProfileUsers(),
+      ));
+    if (response.statusCode == 200) {}
+    else {
+      errorSnackBar(context, responseMap.values.first[0]);
     }*/
   }
 
@@ -260,7 +250,7 @@ class _EditUserScreenState extends State<EditUserScreen> {
                 child: const Text('Editar Usuario'),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
-                    createAccountPressed();
+                    editAccountPressed();
                   }
                 },
               ),
