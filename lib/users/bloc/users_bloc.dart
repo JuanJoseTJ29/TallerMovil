@@ -4,11 +4,11 @@ import 'package:proyectomovil/users/repository/users_repository.dart';
 import 'package:http/http.dart' as http;
 
 class AuthServices {
-  static Future<http.Response> register(String name, String codstud,
-      String facultad, String escuela, String email, String password) async {
+  static Future<http.Response> register(String id, String name, String facultad,
+      String escuela, String email, String password) async {
     Map data = {
+      "id": id,
       "name": name,
-      "codstud": codstud,
       "facultad": facultad,
       "escuela": escuela,
       "email": email,
@@ -38,9 +38,10 @@ class AuthServices {
       body: body,
     );
     print(response.body);
+
     return response;
   }
-
+/*
   static Future<http.Response> mostrar(String id, String name, String codstud,
       String facultad, String escuela) async {
     Map data = {
@@ -59,13 +60,13 @@ class AuthServices {
     );
     print(response.body);
     return response;
-  }
+  } */
 
-  static Future<http.Response> editar(String id, String name, String codstud,
-      String facultad, String escuela) async {
+  static Future<http.Response> editar(
+      String id, String name, String facultad, String escuela) async {
     Map data = {
       "name": name,
-      "codstud": codstud,
+      //  "codstud": codstud,
       "facultad": facultad,
       "escuela": escuela,
     };

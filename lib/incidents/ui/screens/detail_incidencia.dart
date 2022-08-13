@@ -18,7 +18,7 @@ class _Detail_Incidencia extends State<Detail_Incidencia> {
     //Para dar una lista de metodos
     ReviewList(),
     SearchIncidents(),
-    ProfileUsers(),
+    Homepage(),
     registerinci(),
     Encuesta()
   ];

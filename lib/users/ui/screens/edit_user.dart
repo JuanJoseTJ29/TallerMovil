@@ -11,20 +11,22 @@ import 'package:proyectomovil/users/ui/screens/profile_user.dart';
 import '../../../incidents/ui/screens/list_incidents.dart';
 import '../widgets/rounded_button.dart';
 import 'package:proyectomovil/users/repository/users_repository.dart';
+import 'package:proyectomovil/users/ui/widgets/rounded_button.dart';
 
 import '../../../home.dart';
 import 'home_screen.dart';
 import 'login_user.dart';
 
 class EditUserScreen extends StatefulWidget {
-  const EditUserScreen({Key? key}) : super(key: key);
+  String? id;
+  EditUserScreen({this.id});
+  // const EditUserScreen({Key? key}) : super(key: key);
 
   @override
   _EditUserScreenState createState() => _EditUserScreenState();
 }
 
 class _EditUserScreenState extends State<EditUserScreen> {
-
   static final RegExp _nombreExp = RegExp(r"^[a-zA-Z]+$");
   static final RegExp _codigoExp = RegExp(r"^[0-9]{8}$");
 
@@ -39,14 +41,17 @@ class _EditUserScreenState extends State<EditUserScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
+  //String _id ='${widget.id}';
   String _name = '';
-  String _codstud = '';
+  // String _codstud = '';
   String _facultad = '';
   String _escuela = '';
 
   String _selectedFacultad = "Facultad de Ingenieria de Sistemas";
-  var facultades = {"Facultad de Ingenieria de Sistemas": "FISI",
-    "Facultad de Ciencias Físicas": "FCF"};
+  var facultades = {
+    "Facultad de Ingenieria de Sistemas": "FISI",
+    "Facultad de Ciencias Físicas": "FCF"
+  };
 
   List _facultades = [];
 
@@ -57,10 +62,12 @@ class _EditUserScreenState extends State<EditUserScreen> {
   }
 
   String _selectedEscuela = "";
-  var escuelas = {"Escuela Profesional de Ingenieria de Sistemas": "FISI",
+  var escuelas = {
+    "Escuela Profesional de Ingenieria de Sistemas": "FISI",
     "Escuela Profesional de Ingenieria de Software": "FISI",
     "Escuela Profesional de Fisica": "FCF",
-    "Escuela Profesional de Ingenieria de Mecanica de Fluidos": "FCF"};
+    "Escuela Profesional de Ingenieria de Mecanica de Fluidos": "FCF"
+  };
 
   List _escuelas = [];
 
@@ -74,18 +81,20 @@ class _EditUserScreenState extends State<EditUserScreen> {
   }
 
   editAccountPressed() async {
-    /*http.Response response = await AuthServices.editar(id, _name, _codstud,
-        _facultad, _escuela);
+    String _id = '${widget.id}';
+
+    http.Response response =
+        await AuthServices.editar(_id, _name, _facultad, _escuela);
     Map responseMap = jsonDecode(response.body);
     Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (BuildContext context) => ProfileUsers(),
-      ));
-    if (response.statusCode == 200) {}
-    else {
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => Homepage(id: _id),
+        ));
+    if (response.statusCode == 200) {
+    } else {
       errorSnackBar(context, responseMap.values.first[0]);
-    }*/
+    }
   }
 
   validator(valor, date) {
@@ -165,7 +174,7 @@ class _EditUserScreenState extends State<EditUserScreen> {
                   },
                 ),
               ),
-              Container(
+              /*   Container(
                 padding: EdgeInsets.all(5),
                 child: TextFormField(
                   //controller: codstudController,
@@ -189,26 +198,27 @@ class _EditUserScreenState extends State<EditUserScreen> {
                   },
                 ),
               ),
+
+              */
               Container(
                 padding: EdgeInsets.all(5),
                 child: DropdownButtonFormField(
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(4),
-                      )
-                  ),
+                    borderRadius: BorderRadius.circular(4),
+                  )),
                   value: _selectedFacultad,
                   onChanged: (newValue) {
                     setState(() {
-                      _facultades=[];
-                      _escuelas=[];
+                      _facultades = [];
+                      _escuelas = [];
                       EscuelasDependentDropDown(facultades[newValue]);
-                      _selectedFacultad= "$newValue";
+                      _selectedFacultad = "$newValue";
                       _facultad = "$newValue";
                       FacultadesDependentDropDown();
                     });
                   },
-                  items: _facultades.map((facultades){
+                  items: _facultades.map((facultades) {
                     return DropdownMenuItem(
                       child: new Text(facultades),
                       value: facultades,
@@ -221,9 +231,8 @@ class _EditUserScreenState extends State<EditUserScreen> {
                 child: DropdownButtonFormField(
                   decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(4),
-                      )
-                  ),
+                    borderRadius: BorderRadius.circular(4),
+                  )),
                   value: _selectedEscuela,
                   onChanged: (newValue) {
                     setState(() {
@@ -231,7 +240,7 @@ class _EditUserScreenState extends State<EditUserScreen> {
                       _escuela = "$newValue";
                     });
                   },
-                  items:_escuelas.map((escuelas){
+                  items: _escuelas.map((escuelas) {
                     return DropdownMenuItem(
                       child: new Text(escuelas),
                       value: escuelas,

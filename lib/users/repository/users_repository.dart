@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 const String baseURL =
-    "https://taller-movil-backend.herokuapp.com"; //emulator localhost
+    "https://tallermovil-backend.herokuapp.com"; //emulator localhost
 const Map<String, String> headers = {"Content-Type": "application/json"};
 
 errorSnackBar(BuildContext context, String text) {

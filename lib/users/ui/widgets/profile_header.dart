@@ -13,8 +13,8 @@ class Header_Profile extends StatelessWidget {
     final photo_user = Container(
       //Con su contenedor
       margin: EdgeInsets.only(top: 30.0, right: 40.0, left: 40.0),
-      width: 250.0,
-      height: 250.0,
+      width: 150.0,
+      height: 150.0,
       decoration: BoxDecoration(
           shape: BoxShape.circle,
           image: DecorationImage(

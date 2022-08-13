@@ -22,8 +22,8 @@ class _homeIncidents extends State<homeIncidents> {
   final List<Widget> widgetsChildren = [
     //Para dar una lista de metodos
     ReviewList(),
+    Homepage(),
     SearchIncidents(),
-    ProfileUsers(),
     registerinci(),
     Encuesta(),
   ];

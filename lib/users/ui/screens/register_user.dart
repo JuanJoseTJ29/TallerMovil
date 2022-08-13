@@ -50,7 +50,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String _email = '';
   String _password = '';
   String _name = '';
-  String _codstud = '';
+  String _id = '';
   String _facultad = '';
   String _escuela = '';
 
@@ -93,7 +93,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         .hasMatch(_email);
     if (emailValid) {
       http.Response response = await AuthServices.register(
-          _name, _codstud, _facultad, _escuela, _email, _password);
+          _id, _name, _facultad, _escuela, _email, _password);
       Map responseMap = jsonDecode(response.body);
       Navigator.push(
           context,
@@ -212,7 +212,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     }
                   },
                   onChanged: (value) {
-                    _codstud = value;
+                    _id = value;
                   },
                 ),
               ),

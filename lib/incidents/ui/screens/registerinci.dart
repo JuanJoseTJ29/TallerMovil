@@ -5,8 +5,11 @@ import 'list_incidents.dart';
 import 'edit_incidents.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:proyectomovil/incidents/repository/incidents_repository.dart';
+import 'package:proyectomovil/incidents/bloc/incidents_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:dio/dio.dart';
+import 'package:http/http.dart' as http;
 //import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
@@ -212,26 +215,20 @@ import 'edit_incidents.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:image_picker/image_picker.dart';
-
 //import 'package:dropdown_formfield/dropdown_formfield.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
-
 //static const String _title = 'Flutter Code Sample';
-
 class registerinci extends StatefulWidget {
   @override
   State<registerinci> createState() => _registerinciState();
   
 }
-
 class _registerinciState extends State<registerinci> {
   final _formKey = GlobalKey<FormState>();
   static const String _title = 'Flutter Code Sample';
-
   dynamic _path;
   dynamic _imagen64;
   File? imageFile;
-
   final List<String> items = [
     'Objetos perdidos',
     'Artefactos malogrados',
@@ -240,7 +237,6 @@ class _registerinciState extends State<registerinci> {
     'Laboratorio',
   ];
   String? selectedValue;
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -264,10 +260,8 @@ class _registerinciState extends State<registerinci> {
     );
   }
 }
-
 class MyStatelessWidget extends StatelessWidget {
   const MyStatelessWidget({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Scrollbar(
@@ -322,14 +316,10 @@ class MyStatelessWidget extends StatelessWidget {
                   selectedValue = value as String;
                 });
               },
-
               //itemPadding: const EdgeInsets.only(left: 16, right: 16),
               //buttonPadding: const EdgeInsets.only(left: 5, right: 10),
             ),
           ),
-
-
-
               TextFormField(
                 decoration: InputDecoration(labelText: 'Descripcion : '),
                 validator: (value) {
@@ -402,7 +392,6 @@ class MyStatelessWidget extends StatelessWidget {
           ),
           */
             ],
-
             // child: Text('item $index'),
           );
         },

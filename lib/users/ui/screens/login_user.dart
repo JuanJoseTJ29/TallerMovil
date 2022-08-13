@@ -1,13 +1,14 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:proyectomovil/users/bloc/users_bloc.dart';
 import 'package:proyectomovil/users/repository/users_repository.dart';
+import 'package:proyectomovil/users/bloc/users_bloc.dart';
 import 'package:proyectomovil/users/ui/widgets/rounded_button.dart';
 import 'package:http/http.dart' as http;
 import '../../../incidents/ui/screens/list_incidents.dart';
 import '../../../home.dart';
 
+import 'profile_user.dart';
 import 'home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -18,11 +19,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController codstudController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  String _id = '';
   String _email = '';
   String _password = '';
   bool _validate = false;
+//  String _id = '${widget.id}";
   //int indexTap = 0;
   loginPressed() async {
     if (_email.isNotEmpty && _password.isNotEmpty) {
@@ -32,7 +36,8 @@ class _LoginScreenState extends State<LoginScreen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => homeIncidents(),
+              builder: (BuildContext context) => Homepage(id: _id),
+              //builder: (BuildContext context) => homeIncidents(email: _email  , password:_password),
             ));
       } else {
         errorSnackBar(context, responseMap.values.first);
@@ -81,6 +86,20 @@ class _LoginScreenState extends State<LoginScreen> {
                       fontWeight: FontWeight.w500,
                       fontSize: 30),
                 )),
+            Container(
+              padding: EdgeInsets.all(10),
+              child: TextField(
+                controller: codstudController,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Codigo de Estudiante',
+                  errorText: _validate ? 'Codigo incorrecto' : null,
+                ),
+                onChanged: (value) {
+                  _id = value;
+                },
+              ),
+            ),
             Container(
               padding: EdgeInsets.all(10),
               child: TextField(
