@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import 'incidents/ui/screens/list_incidents.dart';
 import 'incidents/ui/screens/search_incidents.dart';
 import 'users/ui/screens/profile_user.dart';
+import 'users/ui/screens/login_user.dart';
 
 import 'Encuesta.dart';
 import 'incidents/ui/screens/registerinci.dart';
 
 class homeIncidents extends StatefulWidget {
+  String? id;
+  homeIncidents({this.id});
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
@@ -18,11 +21,12 @@ class homeIncidents extends StatefulWidget {
 
 class _homeIncidents extends State<homeIncidents> {
   //Indice para acceder a los elementos
+  String _id = '';
+
   int indexTap = 0;
   final List<Widget> widgetsChildren = [
     //Para dar una lista de metodos
     ReviewList(),
-    Homepage(),
     SearchIncidents(),
     registerinci(),
     Encuesta(),
@@ -55,10 +59,6 @@ class _homeIncidents extends State<homeIncidents> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.dashboard, color: Colors.lightBlue),
                   label: "Mis Registros"),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person, color: Colors.lightBlue),
-                label: "Perfil",
-              ),
               BottomNavigationBarItem(
                   icon: Icon(Icons.book, color: Colors.lightBlue),
                   label: "Registrar incidencia"),

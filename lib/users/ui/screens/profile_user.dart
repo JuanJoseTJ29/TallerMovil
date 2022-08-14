@@ -6,8 +6,13 @@ import '../widgets/profile_data.dart';
 import 'home_screen.dart';
 import '../screens/edit_user.dart';
 import 'package:proyectomovil/users/ui/widgets/rounded_button.dart';
+import 'package:proyectomovil/users/ui/widgets/rounded_buttonn.dart';
 import '../../../home.dart';
 import 'edit_user.dart';
+import '../../../incidents/ui/screens/list_incidents.dart';
+import '../../../incidents/ui/screens/search_incidents.dart';
+import '../../../incidents/ui/screens/registerinci.dart';
+import '../../../Encuesta.dart';
 // Importar
 /*
 import 'home.dart';
@@ -32,11 +37,30 @@ class Homepage extends StatefulWidget {
   Homepage({this.id});
 
   @override
+  /*State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _HomepageState();
+  }
+  */
   _HomepageState createState() => _HomepageState();
 }
 
 class _HomepageState extends State<Homepage> {
   int indexTap = 0;
+  final List<Widget> widgetsChildren = [
+    //Para dar una lista de metodos
+    Homepage(),
+    ReviewList(),
+    SearchIncidents(),
+    registerinci(),
+    Encuesta(),
+  ];
+
+  void onTapTapped(int index) {
+    setState(() {
+      indexTap = index;
+    });
+  }
 
   /* void onTapTapped(int index) {
     setState(() {
@@ -48,8 +72,7 @@ class _HomepageState extends State<Homepage> {
   Future apicall() async {
     String idd = '${widget.id}';
     http.Response response;
-    response = await http.get(
-        Uri.parse("https://tallermovil-backend.herokuapp.com/users/${idd}"));
+    response = await http.get(Uri.parse("http://localhost:3002/users/${idd}"));
     print('Hola ${idd}');
     if (response.statusCode == 200) {
       setState(() {
@@ -70,114 +93,126 @@ class _HomepageState extends State<Homepage> {
         ));
   }
 
+  botonn() async {
+    String iddi = '${widget.id}';
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (BuildContext context) => homeIncidents(),
+          //builder: (BuildContext context) => homeIncidents(email: _email  , password:_password),
+        ));
+  }
+
   @override
   void initState() {
     apicall();
     super.initState();
   }
 
-  void onTapTapped(int index) {
-    setState(() {
-      indexTap = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blue,
-        centerTitle: true,
-        elevation: 0,
-        title: Text(
-          "Perfil de Usuario",
-          style: TextStyle(
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
+        appBar: AppBar(
+          backgroundColor: Colors.blue,
+          centerTitle: true,
+          elevation: 0,
+          title: Text(
+            "Perfil de Usuario",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-      ),
-      body: Center(
-        child: Container(
-          height: 600,
-          width: 700,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20), color: Colors.blue),
-          child: Column(children: [
-            Header_Profile("assets/images/perfilperfill.png", ""),
-            //homeIncidents(),
-            Text(
-              listResponse[0]['name'].toString(),
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25,
-                  color: Color.fromARGB(255, 207, 199, 199)),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10.0),
-            ),
-            Text(
-              'CODIGO DE ESTUDIANTE: ' + listResponse[0]['id'].toString(),
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: Color.fromARGB(255, 14, 7, 7)),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10.0),
-            ),
-            Text(
-              'FACULTAD: ' + listResponse[0]['facultad'].toString(),
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: Color.fromARGB(255, 14, 7, 7)),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10.0),
-            ),
-            Text(
-              'ESCUELA: ' + listResponse[0]['escuela'].toString(),
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: Color.fromARGB(255, 14, 7, 7)),
-            ),
-            Padding(
-              padding: EdgeInsets.all(10.0),
-            ),
-            Text(
-              'EMAIL: ' + listResponse[0]['email'].toString(),
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18,
-                  color: Color.fromARGB(255, 14, 7, 7)),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 10),
-              decoration: BoxDecoration(
-                  color: Colors.blue, borderRadius: BorderRadius.circular(10)),
-              //child: Boton(),
-            ),
-            RoundedButton(
-              btnText: 'EDITAR',
-              onBtnPressed: () => boton(),
-            ),
-          ]),
+        body: Center(
+          child: Container(
+            height: 600,
+            width: 700,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20), color: Colors.blue),
+            child: Column(children: [
+              Header_Profile("assets/images/perfilperfill.png", ""),
+              //homeIncidents(),
+              Text(
+                listResponse[0]['name'].toString(),
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Color.fromARGB(255, 207, 199, 199)),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+              ),
+              Text(
+                'CODIGO DE ESTUDIANTE: ' +
+                    listResponse[0]['usuario_id'].toString(),
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Color.fromARGB(255, 14, 7, 7)),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+              ),
+              Text(
+                'FACULTAD: ' + listResponse[0]['facultad'].toString(),
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Color.fromARGB(255, 14, 7, 7)),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+              ),
+              Text(
+                'ESCUELA: ' + listResponse[0]['escuela'].toString(),
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Color.fromARGB(255, 14, 7, 7)),
+              ),
+              Padding(
+                padding: EdgeInsets.all(10.0),
+              ),
+              Text(
+                'EMAIL: ' + listResponse[0]['email'].toString(),
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 18,
+                    color: Color.fromARGB(255, 14, 7, 7)),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: 10),
+                decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10)),
+                //child: Boton(),
+              ),
+              RoundedButton(
+                btnText: 'EDITAR',
+                onBtnPressed: () => boton(),
+              ),
+              Padding(
+                padding: EdgeInsets.all(2.0),
+              ),
+              RoundedButtonn(
+                btnText: 'Home',
+                onBtnPressed: () => botonn(),
+              ),
+            ]),
+          ),
         ),
-      ),
-
-      /*   bottomNavigationBar: Theme(
+        bottomNavigationBar: Theme(
           data: Theme.of(context)
               .copyWith(canvasColor: Colors.white, primaryColor: Colors.purple),
           child: BottomNavigationBar(
@@ -185,15 +220,12 @@ class _HomepageState extends State<Homepage> {
               currentIndex: indexTap,
               items: [
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.home, color: Colors.lightBlue),
-                    label: "Home"),
-                BottomNavigationBarItem(
-                    icon: Icon(Icons.dashboard, color: Colors.lightBlue),
-                    label: "Mis Registros"),
-                BottomNavigationBarItem(
                   icon: Icon(Icons.person, color: Colors.lightBlue),
                   label: "Perfil",
                 ),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.dashboard, color: Colors.lightBlue),
+                    label: "Mis Registros"),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.book, color: Colors.lightBlue),
                     label: "Registrar incidencia"),
@@ -201,9 +233,7 @@ class _HomepageState extends State<Homepage> {
                     icon: Icon(Icons.face, color: Colors.lightBlue),
                     label: "chatAyuda")
               ]),
-        )
-    */
-    );
+        ));
   }
 }
 /*

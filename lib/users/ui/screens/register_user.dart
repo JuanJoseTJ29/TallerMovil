@@ -8,7 +8,7 @@ import 'package:proyectomovil/users/bloc/users_bloc.dart';
 import 'package:proyectomovil/users/repository/users_repository.dart';
 import '../../../incidents/ui/screens/list_incidents.dart';
 import '../widgets/rounded_button.dart';
-
+import 'dart:ui';
 import '../../../home.dart';
 import 'home_screen.dart';
 import 'login_user.dart';
@@ -57,7 +57,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String _selectedFacultad = "Facultad de Ingenieria de Sistemas";
   var facultades = {
     "Facultad de Ingenieria de Sistemas": "FISI",
-    "Facultad de Ciencias Físicas": "FCF"
+    "Facultad de Ciencias Físicas": "FCF",
+    "Facultad de Derecho y Ciencia Política": "FDCP",
+    "Facultad de Ingeniería Geológica, Minera, Metalúrgica y Geográfica":
+        "FIGMMG",
+    "Facultad de Educación": "FE"
   };
 
   List _facultades = [];
@@ -73,7 +77,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
     "Escuela Profesional de Ingenieria de Sistemas": "FISI",
     "Escuela Profesional de Ingenieria de Software": "FISI",
     "Escuela Profesional de Fisica": "FCF",
-    "Escuela Profesional de Ingenieria de Mecanica de Fluidos": "FCF"
+    "Escuela Profesional de Ingenieria de Mecanica de Fluidos": "FCF",
+    "Escuela Profesional de Derecho": "FDCP",
+    "Escuela Profesional de Ciencia política": "FDCP",
+    "Escuela Profesional de Ingeniería Geológica": "FIGMMG",
+    "Escuela Profesional de Ingeniería Minera": "FIGMMG",
+    "Escuela Profesional de Ingeniería Metalúrgica": "FIGMMG",
+    "Escuela Profesional de Ingeniería Geográfica": "FIGMMG",
+    "Escuela Profesional de Ingeniería Civil": "FIGMMG",
+    "Escuela Profesional de Ingeniería Ambiental": "FIGMMG",
+    "Escuela Profesional de Educación": "FE",
+    "Escuela Profesional de Educación Física": "FE",
   };
 
   List _escuelas = [];
