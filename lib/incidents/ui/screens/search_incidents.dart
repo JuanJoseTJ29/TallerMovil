@@ -29,9 +29,9 @@ class SearchIncidents extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Incident(
-                    "images/objperdidos.jpg",
+                    "assets/images/objperdidos.jpg",
                     "Mochila perdida ayuda!!!",
-                    "Ingeniería de Sistemas e Informática",
+                    "Fisi",
                     "Ayuda mi mochila desaparecio estaba en el 3er piso de la Fisi"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -79,7 +79,7 @@ class SearchIncidents extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Incident(
-                    "images/microscopio.jpg",
+                    "assets/images/microscopio.jpg",
                     "Se rompió Microscopio",
                     "Ciencias Biológica",
                     "Lorem Ipsum is simply dummy text of the printing"),
@@ -129,7 +129,7 @@ class SearchIncidents extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Incident(
-                    "images/electricidad.jpg",
+                    "assets/images/electricidad.jpg",
                     "No hay luz en el 2do piso",
                     "Letras",
                     "Lorem Ipsum is simply dummy text of the printing"),
@@ -179,9 +179,9 @@ class SearchIncidents extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Incident(
-                    "images/Carpetasss.jpg",
-                    "Faltan carpetas en el salon 5B",
-                    "Ingeniería de Sistemas e Informática",
+                    "assets/images/Carpetasss.jpg",
+                    "Faltan carpetas-salon 2B",
+                    "Fisi",
                     "Lorem Ipsum is simply dummy text of the printing"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -229,9 +229,9 @@ class SearchIncidents extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Incident(
-                    "images/profeBR.jpg",
+                    "assets/images/profeBR.jpg",
                     "No hay docente para Tesis",
-                    "Ingeniería de Sistemas e Informática",
+                    "Fisi",
                     "Lorem Ipsum is simply dummy text of the printing"),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

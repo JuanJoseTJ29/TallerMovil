@@ -72,7 +72,8 @@ class _HomepageState extends State<Homepage> {
   Future apicall() async {
     String idd = '${widget.id}';
     http.Response response;
-    response = await http.get(Uri.parse("http://localhost:3002/users/${idd}"));
+    response = await http.get(
+        Uri.parse("https://tallermovil-backend.herokuapp.com/users/${idd}"));
     print('Hola ${idd}');
     if (response.statusCode == 200) {
       setState(() {

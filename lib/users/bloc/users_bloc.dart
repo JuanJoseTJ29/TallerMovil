@@ -7,11 +7,11 @@ class AuthServices {
   static Future<http.Response> register(String id, String name, String facultad,
       String escuela, String email, String password) async {
     Map data = {
-      "id": id,
+      "usuario_id": id,
       "name": name,
+      "email": email,
       "facultad": facultad,
       "escuela": escuela,
-      "email": email,
       "password": password,
     };
     var body = json.encode(data);

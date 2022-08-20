@@ -39,41 +39,35 @@ class _ReviewList extends State<ReviewList> {
         ),
       ),
       body: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          //padding: const EdgeInsets.symmetric(horizontal: 0),
           child: Column(
-            children: <Widget>[
-              Incident(
-                  "assets/images/carnet2.jpg",
-                  "Perdida de Carnet universitario!",
-                  "Varuna Yasas",
-                  "Lorem Ipsum is simply dummy text of the printing"),
-              Incident(
-                  "assets/images/compumal.jpg",
-                  "Computadora sin funcionamiento",
-                  "Anahí Salgado",
-                  "Lorem Ipsum is simply dummy text of the printing"),
-              Incident(
-                  "assets/images/celperdido.jpg",
-                  "Perdida de Celular Samsung",
-                  "Gissele Thomas",
-                  "Lorem Ipsum is simply dummy text of the printing"),
-              Incident(
-                  "assets/images/carnet.jpg",
-                  "Perdida de Carnet de Biblioteca",
-                  "Varuna Yasas",
-                  "Lorem Ipsum is simply dummy text of the printing"),
-              Incident(
-                  "assets/images/sluz.jpg",
-                  "No hay luz en la facultad",
-                  "Anahí Salgado",
-                  "Lorem Ipsum is simply dummy text of the printing"),
-              Incident(
-                  "assets/images/sagua.png",
-                  "No hay agua en la facultad",
-                  "Gissele Thomas",
-                  "Lorem Ipsum is simply dummy text of the printing"),
-            ],
-          )),
+        children: <Widget>[
+          Incident(
+              "assets/images/carnet2.jpg",
+              "Perdida de Carnet universitario",
+              "Varuna Yasas",
+              "ayuda se perdio carnet"),
+          Incident("assets/images/compumal.jpg", "pcs no funcionan",
+              "Anahí Salgado", "computadora no funciona"),
+          Incident(
+              "assets/images/celperdido.jpg",
+              "Perdida de Celular Samsung",
+              "Gissele Thomas",
+              "Lorem Ipsum is simply dummy text of the printing"),
+          Incident("assets/images/carnet.jpg", "Perdida-Carnet Biblioteca",
+              "Varuna Yasas", "se me perdio mi carnet"),
+          Incident(
+              "assets/images/sluz.jpg",
+              "No hay luz en la facultad",
+              "Anahí Salgado",
+              "Lorem Ipsum is simply dummy text of the printing"),
+          Incident(
+              "assets/images/sagua.png",
+              "No hay agua en la facultad",
+              "Gissele Thomas",
+              "Lorem Ipsum is simply dummy text of the printing"),
+        ],
+      )),
     );
   }
 }

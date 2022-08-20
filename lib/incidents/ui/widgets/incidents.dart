@@ -69,7 +69,7 @@ class Incident extends StatelessWidget {
     //Creamos la variable para las estrellas
     final photo = Container(
       //Con su contenedor
-      margin: EdgeInsets.only(top: 30.0, right: 40.0, left: 40),
+      margin: EdgeInsets.only(top: 30.0, right: 20.0, left: 20),
       width: 85.0,
       height: 85.0,
       decoration: BoxDecoration(

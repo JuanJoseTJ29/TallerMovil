@@ -59,8 +59,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     "Facultad de Ingenieria de Sistemas": "FISI",
     "Facultad de Ciencias Físicas": "FCF",
     "Facultad de Derecho y Ciencia Política": "FDCP",
-    "Facultad de Ingeniería Geológica, Minera, Metalúrgica y Geográfica":
-        "FIGMMG",
+    "Facultad de Ingeniería Geológica": "FIGMMG",
     "Facultad de Educación": "FE"
   };
 
@@ -74,20 +73,20 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   String _selectedEscuela = "";
   var escuelas = {
-    "Escuela Profesional de Ingenieria de Sistemas": "FISI",
-    "Escuela Profesional de Ingenieria de Software": "FISI",
-    "Escuela Profesional de Fisica": "FCF",
-    "Escuela Profesional de Ingenieria de Mecanica de Fluidos": "FCF",
-    "Escuela Profesional de Derecho": "FDCP",
-    "Escuela Profesional de Ciencia política": "FDCP",
-    "Escuela Profesional de Ingeniería Geológica": "FIGMMG",
-    "Escuela Profesional de Ingeniería Minera": "FIGMMG",
-    "Escuela Profesional de Ingeniería Metalúrgica": "FIGMMG",
-    "Escuela Profesional de Ingeniería Geográfica": "FIGMMG",
-    "Escuela Profesional de Ingeniería Civil": "FIGMMG",
-    "Escuela Profesional de Ingeniería Ambiental": "FIGMMG",
-    "Escuela Profesional de Educación": "FE",
-    "Escuela Profesional de Educación Física": "FE",
+    "Ingenieria de Sistemas": "FISI",
+    "Ingenieria de Software": "FISI",
+    "Fisica": "FCF",
+    "Ingenieria de Mecanica de Fluidos": "FCF",
+    "Derecho": "FDCP",
+    "Ciencias política": "FDCP",
+    "Ingeniería Geológica": "FIGMMG",
+    "Ingeniería Minera": "FIGMMG",
+    "Ingeniería Metalúrgica": "FIGMMG",
+    "Ingeniería Geográfica": "FIGMMG",
+    "Ingeniería Civil": "FIGMMG",
+    "Ingeniería Ambiental": "FIGMMG",
+    "Educación": "FE",
+    "Educación Física": "FE",
   };
 
   List _escuelas = [];
@@ -231,12 +230,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               Container(
+                // alignment: Alignment.topLeft,
+                // height: 50.0,
+                // width: 400.0,
                 padding: EdgeInsets.all(5),
                 child: DropdownButtonFormField(
                   decoration: InputDecoration(
+                      labelText: 'Facultad : ',
                       enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  )),
+                        borderRadius: BorderRadius.circular(4),
+                      )),
                   value: _selectedFacultad,
                   onChanged: (newValue) {
                     setState(() {
@@ -257,12 +260,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
               ),
               Container(
+                // alignment: Alignment.topLeft,
+                // height: 50.0,
+                // width: 400.0,
                 padding: EdgeInsets.all(5),
                 child: DropdownButtonFormField(
                   decoration: InputDecoration(
+                      labelText: 'Escuela : ',
                       enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(4),
-                  )),
+                        borderRadius: BorderRadius.circular(4),
+                      )),
                   value: _selectedEscuela,
                   onChanged: (newValue) {
                     setState(() {

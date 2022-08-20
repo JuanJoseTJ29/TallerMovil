@@ -6,8 +6,10 @@ import 'edit_incidents.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:proyectomovil/incidents/repository/incidents_repository.dart';
+import 'package:proyectomovil/incidents/ui/widgets/mesagges.dart';
 import 'package:proyectomovil/incidents/bloc/incidents_bloc.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:http_parser/http_parser.dart';
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
 //import 'package:dropdown_formfield/dropdown_formfield.dart';
@@ -19,11 +21,24 @@ class registerinci extends StatefulWidget {
 }
 
 class _registerinciState extends State<registerinci> {
-  File? imagen = null;
-  final picker = ImagePicker();
+  // File? imagen = null;
+  String _titulo = '';
+  String _lugar = '';
+  //String _categoria = 'dfsdf';
+  String _descripcion = '';
+  String _idusuario = '12345007';
+  String? selectedValue; // la categoria
+  String? token;
+  dynamic _path;
+  dynamic _imagen64;
+  bool _isLoading = false;
+  setLoading(bool state) => setState(() => _isLoading = state);
+  File? imageFile;
+
+  // final picker = ImagePicker();
 
   final _formKey = GlobalKey<FormState>();
-
+/*
   Future selImagen(op) async {
     var pickedFile;
     if (op == 1) {
@@ -41,7 +56,75 @@ class _registerinciState extends State<registerinci> {
     });
     Navigator.of(context).pop();
   }
+*/
 
+  final List<String> items = [
+    'Objetos perdidos',
+    'Artefactos malogrados',
+    'Servicios Basicos',
+    'Administrativo',
+    'Laboratorio',
+  ];
+
+  Future<dynamic> postAddPincident(
+      titulo, lugar, categoria, descripcion, image, id_usuario) async {
+    //  print('holaholaaa');
+    var postUri =
+        Uri.parse("https://tallermovil-backend.herokuapp.com/incidencias");
+    var request = http.MultipartRequest("POST", postUri);
+    request.fields['titulo'] = titulo;
+    request.fields['lugar'] = lugar;
+    request.fields['categoria'] = categoria;
+    request.fields['descripcion'] = descripcion;
+    request.fields['id_usuario'] = '34';
+    request.headers.addAll(
+        {"Authorization": "Bearer $token", "Accept": "application/json"});
+    http.MultipartFile multipartFile =
+        await http.MultipartFile.fromPath('image', image);
+    request.files.add(multipartFile);
+    var response = await request.send();
+    final respStr = await response.stream.bytesToString();
+    print(response.statusCode);
+    print(respStr);
+    //Map valor = jsonDecode(respStr);
+    if (response.statusCode == 200) {
+      print('holaholaaa');
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            // builder: (BuildContext context) => ReviewList(),
+            builder: (BuildContext context) => ReviewList(),
+            //  builder: (BuildContext context) => homeIncidents(),
+          ));
+    }
+  }
+/*
+  Dio dio = new Dio();
+
+  Future<void> subirimagen() async {
+    try {
+      String filename = imagen!.path;
+      FormData formData = new FormData.fromMap({
+        'titulo': '_titulo',
+        'lugar': '_lugar',
+        'categoria': 'selectedValue',
+        'descripcion': '_descripcion',
+        'id_usuario': '_idusuario',
+        'file': await MultipartFile.fromFile(
+          imagen!.path,
+          filename: filename,
+          contentType: new MediaType("image", "jpg"),
+        ),
+      });
+      print('holaholaaa');
+      await Dio().post('https://tallermovil-backend.herokuapp.com/incidencias',
+          data: formData);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+  */
+/*
   opciones(context) {
     showDialog(
         context: context,
@@ -119,19 +202,9 @@ class _registerinciState extends State<registerinci> {
           );
         });
   }
+*/
 
-  dynamic _path;
-  dynamic _imagen64;
-  File? imageFile;
-
-  final List<String> items = [
-    'Objetos perdidos',
-    'Artefactos malogrados',
-    'Servicios Basicos',
-    'Administrativo',
-    'Laboratorio',
-  ];
-  String? selectedValue;
+  //String? selectedValue;
 
   @override
   Widget build(BuildContext context) {
@@ -160,6 +233,9 @@ class _registerinciState extends State<registerinci> {
                   return 'Ingrese el titulo';
                 }
               },
+              onChanged: (value) {
+                _titulo = value;
+              },
             ),
             TextFormField(
               decoration: InputDecoration(labelText: 'Lugar : '),
@@ -167,6 +243,9 @@ class _registerinciState extends State<registerinci> {
                 if (value!.isEmpty) {
                   return 'Ingrese el lugar';
                 }
+              },
+              onChanged: (value) {
+                _lugar = value;
               },
             ),
             Container(
@@ -208,11 +287,14 @@ class _registerinciState extends State<registerinci> {
                   return 'Ingrese la descripcion';
                 }
               },
+              onChanged: (value) {
+                _descripcion = value;
+              },
             ),
             Padding(
               padding: EdgeInsets.all(10.0),
             ),
-            ElevatedButton(
+            /*  ElevatedButton(
               onPressed: () {
                 opciones(context);
               },
@@ -220,6 +302,8 @@ class _registerinciState extends State<registerinci> {
               // style: ElevatedButton.styleFrom(
               //   primary: Color.fromARGB(255, 52, 105, 203)),
             ),
+            */
+            /*
             SizedBox(
               height: 10,
             ),
@@ -227,7 +311,9 @@ class _registerinciState extends State<registerinci> {
               height: 30,
             ),
             imagen != null ? Image.file(imagen!, width: 200) : Center(),
-            /* Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+
+            */
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               (_path == null)
                   ? Container()
                   : Container(
@@ -238,8 +324,9 @@ class _registerinciState extends State<registerinci> {
                 child: const Text("Seleccionar imagen"),
                 onPressed: () async {
                   final ImagePicker _picker = ImagePicker();
-                  PickedFile? _archivo =
-                      await _picker.getImage(source: ImageSource.gallery);
+                  // final picker = ImagePicker();
+                  PickedFile? _archivo = await _picker.getImage(
+                      source: ImageSource.gallery); //actualizar porseacasoo
                   if (_archivo != null) {
                     imageFile = File(_archivo.path);
                   }
@@ -251,7 +338,7 @@ class _registerinciState extends State<registerinci> {
                   _imagen64 = _path;
                 },
               ),
-            ]), */
+            ]),
             Padding(
               padding: EdgeInsets.all(10.0),
             ),
@@ -260,18 +347,20 @@ class _registerinciState extends State<registerinci> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  child: Text(
-                    'Registrar',
-                  ),
-                  style: ElevatedButton.styleFrom(
-                    primary: Color.fromARGB(255, 59, 241, 31),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => incidence_edit()),
-                    );
+                  onPressed: () async {
+                    // devolverá true si el formulario es válido, o falso si
+                    // el formulario no es válido.
+                    postAddPincident(_titulo, _lugar, selectedValue,
+                        _descripcion, _path, _idusuario);
                   },
+                  child: const Text('Registrar incidencia'),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.green,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 45, vertical: 12),
+                    textStyle: const TextStyle(
+                        fontSize: 17, fontWeight: FontWeight.bold),
+                  ),
                 ),
                 ElevatedButton(
                   child: Text(
@@ -341,7 +430,7 @@ class registerinci extends StatefulWidget {
 class _registerinciState extends State<registerinci> {
   final _formKey = GlobalKey<FormState>();
   static const String _title = 'Flutter Code Sample';
-  dynamic _path;
+  dynamic _path; 
   dynamic _imagen64;
   File? imageFile;
   final List<String> items = [
