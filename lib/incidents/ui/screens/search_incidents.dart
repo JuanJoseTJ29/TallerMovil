@@ -297,7 +297,7 @@ showAlertDialog(BuildContext context) {
 
   // set up the AlertDialog
   AlertDialog alert = AlertDialog(
-    title: Text("Editar Usuario"),
+    title: Text("Eliminar incidencia"),
     content: Row(children: [
       Image.asset('assets/images/advertencia.jpg', height: 80),
       Text("¿Estas seguro que quieres eliminar esta incidencia?"),

@@ -76,7 +76,7 @@ class _Detail_Incidencia extends State<Detail_Incidencia> {
                 Align(
                   alignment: AlignmentDirectional(-0.05, -0.05),
                   child: Image.asset(
-                    'assets/images/carnet2.jpg',
+                    'assets/images/carnetpp.JPG',
                     width: 200,
                     height: 180,
                     fit: BoxFit.cover,
@@ -93,7 +93,7 @@ class _Detail_Incidencia extends State<Detail_Incidencia> {
                   padding: EdgeInsets.all(5.0),
                 ),
                 Text(
-                  'Se me perdio el carnet en la facultad de letras\nPor favor ayudenme a encontrarlo si alguien lo \nve por favor comunicarse con el numero:\n948971165.',
+                  'Se me perdio mi carnet universitario en la facultad de letras\npor favor ayudenme a encontrarlo ',
                   textAlign: TextAlign.justify,
                 ),
                 Padding(
@@ -127,7 +127,9 @@ class _Detail_Incidencia extends State<Detail_Incidencia> {
                       ),
                       style: ElevatedButton.styleFrom(
                           primary: Color.fromARGB(255, 243, 12, 12)),
-                      onPressed: () {},
+                      onPressed: () {
+                        showAlertDialog(context);
+                      },
                     ),
                   ],
                 ),
@@ -137,7 +139,9 @@ class _Detail_Incidencia extends State<Detail_Incidencia> {
                   ),
                   style: ElevatedButton.styleFrom(
                       primary: Color.fromARGB(255, 9, 229, 16)),
-                  onPressed: () {},
+                  onPressed: () {
+                    showAlertDialogg(context);
+                  },
                 ),
               ],
             ),
@@ -157,19 +161,95 @@ class _Detail_Incidencia extends State<Detail_Incidencia> {
                     icon: Icon(Icons.home, color: Colors.lightBlue),
                     label: "Home"),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.search, color: Colors.lightBlue),
-                    label: "Buscar"),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person, color: Colors.lightBlue),
-                  label: "Perfil",
-                ),
+                    icon: Icon(Icons.dashboard, color: Colors.lightBlue),
+                    label: "Mis Registros"),
                 BottomNavigationBarItem(
                     icon: Icon(Icons.book, color: Colors.lightBlue),
                     label: "Registrar incidencia"),
                 BottomNavigationBarItem(
-                    icon: Icon(Icons.start, color: Colors.lightBlue),
-                    label: "Formulario")
+                    icon: Icon(Icons.face, color: Colors.lightBlue),
+                    label: "chatAyuda")
               ]),
         ));
   }
+}
+
+showAlertDialog(BuildContext context) {
+  // set up the buttons
+  Widget cancelButton = TextButton(
+    child: Text("Cancelar"),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+  Widget continueButton = TextButton(
+    child: Text("Elimnar"),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SearchIncidents()),
+      );
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Elminar Incidencia"),
+    content: Row(children: [
+      Image.asset('assets/images/advertencia.jpg', height: 80),
+      Text("¿Estas seguro que quieres eliminar esta incidencia?"),
+    ]),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+showAlertDialogg(BuildContext context) {
+  // set up the buttons
+  Widget cancelButton = TextButton(
+    child: Text("Cancelar"),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+  Widget continueButton = TextButton(
+    child: Text("Corregir"),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SearchIncidents()),
+      );
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Marcar como corregido"),
+    content: Row(children: [
+      Image.asset('assets/images/corregidoo.jpg', height: 80),
+      Text("¿Estas seguro que quieres marcar como corregida la incidencia?"),
+    ]),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

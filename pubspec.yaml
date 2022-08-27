@@ -99,6 +99,8 @@ flutter:
     - assets/images/celperdido.jpg
     - assets/images/advertencia.jpg
     - assets/images/perfilperfill.png
+    - assets/images/corregidoo.jpg
+    - assets/images/carnetpp.JPG
     - assets/dialog_flow_auth.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

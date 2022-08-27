@@ -157,7 +157,9 @@ class _incidenceState extends State<incidence_edit> {
                     ),
                     style: ElevatedButton.styleFrom(
                         primary: Color.fromARGB(255, 52, 105, 203)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                   ),
                 ],
               ),
@@ -188,6 +190,68 @@ class _incidenceState extends State<incidence_edit> {
           //             icon: Icon(Icons.start, color: Colors.lightBlue),
           //             label: "Formulario")
           //       ]),
+        ),
+        bottomNavigationBar: Theme(
+          data: Theme.of(context)
+              .copyWith(canvasColor: Colors.white, primaryColor: Colors.purple),
+          child: BottomNavigationBar(
+              //Se activa la funcion
+              currentIndex: indexTap,
+              onTap: (int index) => setState(() => indexTap = index),
+              items: [
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.home, color: Colors.lightBlue),
+                    label: "Home"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.dashboard, color: Colors.lightBlue),
+                    label: "Mis Registros"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.book, color: Colors.lightBlue),
+                    label: "Registrar incidencia"),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.face, color: Colors.lightBlue),
+                    label: "chatAyuda")
+              ]),
         ));
   }
+}
+
+showAlertDialog(BuildContext context) {
+  // set up the buttons
+  Widget cancelButton = TextButton(
+    child: Text("Cancelar"),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+  Widget continueButton = TextButton(
+    child: Text("Editar"),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SearchIncidents()),
+      );
+    },
+  );
+
+  // set up the AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Editar Incidencia"),
+    content: Row(children: [
+      Image.asset('assets/images/advertencia.jpg', height: 80),
+      Text("¿Estas seguro que quieres editar esta incidencia?"),
+    ]),
+    actions: [
+      cancelButton,
+      continueButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

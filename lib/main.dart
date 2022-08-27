@@ -31,7 +31,7 @@ class _MyApp extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         title: 'Home',
         home: Scaffold(body: RegisterScreen()
-            //body: RegisterScreen(),   registerinci(), ReviewList() , Detail_Incidencia() , SearchIncidents(), ReviewList()
+            //body: RegisterScreen(),   registerinci(), ReviewList() , Detail_Incidencia() , SearchIncidents(), ReviewList(), Detail_Incidencia()
             ));
   }
 }

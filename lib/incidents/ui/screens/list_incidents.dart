@@ -43,7 +43,7 @@ class _ReviewList extends State<ReviewList> {
           child: Column(
         children: <Widget>[
           Incident(
-              "assets/images/carnet2.jpg",
+              "assets/images/carnetpp.JPG",
               "Perdida de Carnet universitario",
               "Varuna Yasas",
               "ayuda se perdio carnet"),

@@ -26,7 +26,7 @@ class _registerinciState extends State<registerinci> {
   String _lugar = '';
   //String _categoria = 'dfsdf';
   String _descripcion = '';
-  String _idusuario = '12345007';
+  String _idusuario = '12345008';
   String? selectedValue; // la categoria
   String? token;
   dynamic _path;
@@ -368,7 +368,9 @@ class _registerinciState extends State<registerinci> {
                   ),
                   style: ElevatedButton.styleFrom(
                       primary: Color.fromARGB(255, 52, 105, 203)),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
                 ),
               ],
             ),
