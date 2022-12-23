@@ -7,6 +7,7 @@ import 'package:proyectomovil/users/repository/auth_services.dart';
 import 'package:proyectomovil/users/repository/globals.dart';
 import '../../../incidents/ui/screens/list_incidents.dart';
 import '../widgets/rounded_button.dart';
+import 'dart:developer';
 
 import '../../../home.dart';
 import 'home_screen.dart';
@@ -78,6 +79,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(_email);
     if (emailValid) {
+      log('data: $_email ');
+      log('data: $_password ');
+      log('data: $_name ');
+      log('data: $_codstud ');
+      log('data: $_facultad ');
       http.Response response = await AuthServices.register(
           _name, _codstud, _facultad, _escuela, _email, _password);
       Map responseMap = jsonDecode(response.body);
