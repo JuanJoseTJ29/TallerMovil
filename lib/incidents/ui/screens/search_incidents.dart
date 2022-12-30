@@ -29,7 +29,8 @@ class SearchIncidents extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Incident(
-                    "assets/images/objperdidos.jpg",
+                    //"assets/images/objperdidos.jpg",
+                    "1",
                     "Mochila perdida ayuda!!!",
                     "Fisi",
                     "Ayuda mi mochila desaparecio estaba en el 3er piso de la Fisi"),
@@ -79,7 +80,8 @@ class SearchIncidents extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Incident(
-                    "assets/images/microscopio.jpg",
+                    //"assets/images/microscopio.jpg",
+                    "1",
                     "Se rompió Microscopio",
                     "Ciencias Biológica",
                     "Lorem Ipsum is simply dummy text of the printing"),
@@ -129,7 +131,8 @@ class SearchIncidents extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Incident(
-                    "assets/images/electricidad.jpg",
+                    //"assets/images/electricidad.jpg",
+                    "1",
                     "No hay luz en el 2do piso",
                     "Letras",
                     "Lorem Ipsum is simply dummy text of the printing"),
@@ -179,7 +182,8 @@ class SearchIncidents extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Incident(
-                    "assets/images/Carpetasss.jpg",
+                    //"assets/images/Carpetasss.jpg",
+                    "1",
                     "Faltan carpetas-salon 2B",
                     "Fisi",
                     "Lorem Ipsum is simply dummy text of the printing"),
@@ -229,7 +233,8 @@ class SearchIncidents extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Incident(
-                    "assets/images/profeBR.jpg",
+                    //"assets/images/profeBR.jpg",
+                    "1",
                     "No hay docente para Tesis",
                     "Fisi",
                     "Lorem Ipsum is simply dummy text of the printing"),

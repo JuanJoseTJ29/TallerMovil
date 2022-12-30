@@ -1,4 +1,6 @@
 //Importamos el paquete de material
+//import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 import '../screens/detail_incidencia.dart';
@@ -6,6 +8,7 @@ import '../screens/detail_incidencia.dart';
 //Creamos la clase DescriptionPlace que hereda de la clase StatelessWidget
 class Incident extends StatelessWidget {
   //Variable para el path de la imagen
+  String _id;
   String pathImage = "assets/images/people_1.jpeg";
   //Variables
   String nameIncident = "Nombre Incidencia";
@@ -14,7 +17,11 @@ class Incident extends StatelessWidget {
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry";
   //Constructor
   Incident(
-      this.pathImage, this.categoryIncident, this.nameIncident, this.comment);
+      //this.pathImage, 
+      this._id,
+      this.categoryIncident, 
+      this.nameIncident, 
+      this.comment);
 
   //Se debe de sobreescribir el metodo
   @override
@@ -50,7 +57,7 @@ class Incident extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (BuildContext context) => const Detail_Incidencia(),
+              builder: (BuildContext context) => Detail_Incidencia(id: _id),
             ));
       },
       child: const Text(

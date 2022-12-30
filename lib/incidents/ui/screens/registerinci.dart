@@ -26,7 +26,7 @@ class _registerinciState extends State<registerinci> {
   String _lugar = '';
   //String _categoria = 'dfsdf';
   String _descripcion = '';
-  String _idusuario = '12345008';
+  String _idusuario = '';
   String? selectedValue; // la categoria
   String? token;
   dynamic _path;
@@ -68,25 +68,24 @@ class _registerinciState extends State<registerinci> {
 
   Future<dynamic> postAddPincident(
       titulo, lugar, categoria, descripcion, image, id_usuario) async {
-    //  print('holaholaaa');
-    var postUri =
-        Uri.parse("https://tallermovil-backend.herokuapp.com/incidencias");
-    var request = http.MultipartRequest("POST", postUri);
-    request.fields['titulo'] = titulo;
-    request.fields['lugar'] = lugar;
-    request.fields['categoria'] = categoria;
-    request.fields['descripcion'] = descripcion;
-    request.fields['id_usuario'] = '34';
-    request.headers.addAll(
-        {"Authorization": "Bearer $token", "Accept": "application/json"});
-    http.MultipartFile multipartFile =
-        await http.MultipartFile.fromPath('image', image);
-    request.files.add(multipartFile);
-    var response = await request.send();
-    final respStr = await response.stream.bytesToString();
-    print(response.statusCode);
-    print(respStr);
-    //Map valor = jsonDecode(respStr);
+    print(id_usuario);
+
+    Map data = {
+      "usuario_id": "34",
+      "titulo": titulo,
+      "lugar": lugar,
+      "categoria": categoria,
+      "descripcion": descripcion,
+    };
+    var body = json.encode(data);
+    var postUri = Uri.parse("http://localhost:3002/incidencias");
+
+    http.Response response = await http.post(
+      postUri,
+      headers: {"Content-Type": "application/json"},
+      body: body,
+    );
+
     if (response.statusCode == 200) {
       print('holaholaaa');
       Navigator.push(
@@ -320,7 +319,7 @@ class _registerinciState extends State<registerinci> {
                       margin: const EdgeInsets.only(left: 4.0, right: 4.0),
                       child: Image.file(File(_path), width: 200),
                     ),
-              ElevatedButton(
+              /*ElevatedButton(
                 child: const Text("Seleccionar imagen"),
                 onPressed: () async {
                   final ImagePicker _picker = ImagePicker();
@@ -337,7 +336,7 @@ class _registerinciState extends State<registerinci> {
                   List<int> bytes = await new File(_path).readAsBytesSync();
                   _imagen64 = _path;
                 },
-              ),
+              ),*/
             ]),
             Padding(
               padding: EdgeInsets.all(10.0),

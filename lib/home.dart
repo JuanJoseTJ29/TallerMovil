@@ -27,7 +27,7 @@ class _homeIncidents extends State<homeIncidents> {
   final List<Widget> widgetsChildren = [
     //Para dar una lista de metodos
     ReviewList(),
-    SearchIncidents(),
+    //SearchIncidents(),
     registerinci(),
     Encuesta(),
   ];
@@ -56,9 +56,9 @@ class _homeIncidents extends State<homeIncidents> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.home, color: Colors.lightBlue),
                   label: "Home"),
-              BottomNavigationBarItem(
+              /*BottomNavigationBarItem(
                   icon: Icon(Icons.dashboard, color: Colors.lightBlue),
-                  label: "Mis Registros"),
+                  label: "Mis Registros"),*/
               BottomNavigationBarItem(
                   icon: Icon(Icons.book, color: Colors.lightBlue),
                   label: "Registrar incidencia"),

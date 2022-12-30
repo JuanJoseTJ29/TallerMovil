@@ -46,12 +46,13 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
+  
   int indexTap = 0;
   final List<Widget> widgetsChildren = [
     //Para dar una lista de metodos
     Homepage(),
     ReviewList(),
-    SearchIncidents(),
+    //SearchIncidents(),
     registerinci(),
     Encuesta(),
   ];
@@ -73,18 +74,19 @@ class _HomepageState extends State<Homepage> {
     String idd = '${widget.id}';
     http.Response response;
     response = await http.get(
-        Uri.parse("https://tallermovil-backend.herokuapp.com/users/${idd}"));
+        Uri.parse("http://localhost:3002/users/${idd}"));
     print('Hola ${idd}');
     if (response.statusCode == 200) {
       setState(() {
         //stringResponse = response.body;
         mapResponse = json.decode(response.body);
+        print(mapResponse);
         listResponse = mapResponse['user'];
       });
     }
   }
 
-  boton() async {
+  /*boton() async {
     String iddi = '${widget.id}';
     Navigator.push(
         context,
@@ -92,14 +94,14 @@ class _HomepageState extends State<Homepage> {
           builder: (BuildContext context) => EditUserScreen(id: iddi),
           //builder: (BuildContext context) => homeIncidents(email: _email  , password:_password),
         ));
-  }
+  }*/
 
   botonn() async {
     String iddi = '${widget.id}';
     Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (BuildContext context) => homeIncidents(),
+          builder: (BuildContext context) => homeIncidents(id: iddi),
           //builder: (BuildContext context) => homeIncidents(email: _email  , password:_password),
         ));
   }
@@ -148,7 +150,7 @@ class _HomepageState extends State<Homepage> {
               ),
               Text(
                 'CODIGO DE ESTUDIANTE: ' +
-                    listResponse[0]['usuario_id'].toString(),
+                    listResponse[0]['_id'].toString(),
                 textAlign: TextAlign.center,
                 overflow: TextOverflow.ellipsis,
                 style: const TextStyle(
@@ -199,10 +201,10 @@ class _HomepageState extends State<Homepage> {
                     borderRadius: BorderRadius.circular(10)),
                 //child: Boton(),
               ),
-              RoundedButton(
+              /*RoundedButton(
                 btnText: 'EDITAR',
                 onBtnPressed: () => boton(),
-              ),
+              ),*/
               Padding(
                 padding: EdgeInsets.all(2.0),
               ),
@@ -224,9 +226,9 @@ class _HomepageState extends State<Homepage> {
                   icon: Icon(Icons.person, color: Colors.lightBlue),
                   label: "Perfil",
                 ),
-                BottomNavigationBarItem(
+                /*BottomNavigationBarItem(
                     icon: Icon(Icons.dashboard, color: Colors.lightBlue),
-                    label: "Mis Registros"),
+                    label: "Mis Registros"),*/
                 BottomNavigationBarItem(
                     icon: Icon(Icons.book, color: Colors.lightBlue),
                     label: "Registrar incidencia"),
